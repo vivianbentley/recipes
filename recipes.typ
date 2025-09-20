@@ -898,7 +898,6 @@
   recipe(
     "main",
     "miso-marinated salmon",
-    image-path: "imgs/miso-marinated-salmon.jpg",
     (
       ([1 lb], [salmon filet]),
       1,
@@ -918,6 +917,31 @@
       Scrape the marinade off the salmon to discard. Broil the salmon filets on low-middle rack, cooking #u[8 mins] until tops are slightly charred.
       
       Combine #g(2). Serve with salmon and reserved marinade.
+    ],
+  ),
+  recipe(
+    "main",
+    "gnocchi",
+    adapted-from: "ANTI-CHEF on YouTube",
+    bon-appetit: false,
+    (
+      ([1.5 lb], [plum tomatoes]),
+      ([1], [yellow onion], [skinned, cut in half]),
+      ([4 Tbsp], [butter]),
+      none,
+      ([4], [golden potatoes], [skinned, coursely diced]),
+      ([2 cup], [flour]),
+      none,
+      ([1 oz], [Parmesan], [grated])
+    ),
+    [
+      Place #i[tomatoes] in boiling water for #u[1 min]. Remove tomato skin once the tomatoes are handleable. Rinse in cold water. Cut lengthwise and remove stems. Cook in covered saucepan for #u[10 mins] over #u[medium] heat. Blend the tomatoes, then add #i[onion] and #i[butter]. Cook uncovered on a slow but steady simmer until reduced, #u[45-90 mins]. Add #i[salt] to taste.
+
+      Meanwhile, boil diced #i[potatoes] until tender and mashable to avoid chunks. Strain potatoes and puree. Add #i[flour] to pureed potato a bit at a time until the dough is soft, smooth and light in color. The exact amount of flour added will differ based on potato size. Roll dough to #u[\~#half-in] cylinders. Cut desired size to make individual gnoccho. I don't care about making them look pretty, figure it out yourself if you do.
+
+      Generously salt water in a large pot and bring to a light boil. Add gnocchi, only enough to cover the bottom of the pot in a single layer at a time. Allow each gnoccho to float to the top and stay there for #u[\~10 secs] before removing.
+
+      Soon after removing, add sauce to gnocchi to avoid sticking. Serve with #i[Parmesan].
     ],
   ),
   // recipe(
