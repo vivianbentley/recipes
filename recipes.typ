@@ -897,6 +897,33 @@
   ),
   recipe(
     "main",
+    "green chutney chicken",
+    adapted-from: "Oct 25 p22",
+    image-path: "imgs/green-chicken-chutney.png",
+    (
+      1,
+      ([1], [cilantro bunch], [(medium size) coarsely chopped with stems]),
+      ([4], [garlic cloves]),
+      ([1], [jalapeño], [stem removed]),
+      ([#half cup], [mint leaves], [when tightly packed]),
+      ([#frac(1,4) cup], [sour cream]),
+      ([2 Tbsp], [yellow mustard]),
+      ([1 tsp], [ground cardamom]),
+      ([3 Tbsp], [olive oil]),
+      ([2 tsp], [salt]),
+      none,
+      ([\~2 lb], [chicken thighs], [(boneless) cut into 2" pieces])
+    ),
+    [
+      Purée #g(1) in food processor. Use rubber spatula to make sure sauce is very well blended, until smooth and bright green. Transfer to bowl.
+
+      Add #i[chicken] to bowl. Toss to coat. Allow to sit for at least #u[15 min] at room temperature (or overnight in the fridge).
+
+      Set oven to broil, with rack in top slot. Place chicken on tinfoil-lined sheet. Remove when browned and cooked to temperature.
+    ],
+  ),
+  recipe(
+    "main",
     "miso-marinated salmon",
     (
       ([1 lb], [salmon filet]),
