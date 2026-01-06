@@ -971,6 +971,39 @@
       Soon after removing, add sauce to gnocchi to avoid sticking. Serve with #i[Parmesan].
     ],
   ),
+  recipe(
+    "main",
+    "pork and shrimp cabbage rolls",
+    adapted-from: "Mar 25 p75",
+    (
+      ([1], [large cabbage head]),
+      1,
+      ([5-8], [green onions], [finely chopped]),
+      ([6], [garlic cloves], [finely chopped]),
+      ([3"], [ginger], [finely chopped]),
+      ([1 lb], [ground pork]),
+      ([1 lb], [shrimp], [prepared and chopped]),
+      ([3 Tbsp], [soy sauce]),
+      ([#frac(3,2) tsp], [salt]),
+      ([1 Tbsp], [sugar]),
+      ([1 Tbsp], [toasted sesame oil]),
+      2,
+      ([2 tsp], [ginger powder]),
+      ([2 tsp], [garlic powder]),
+      ([#frac(1,4) cup], [soy sauce]),
+      ([#frac(1,4) cup], [rice vinegar]),
+      ([1 Tbsp], [sugar]),
+      ([#frac(1,2) tsp], [toasted sesame oil]),
+      
+    ),
+    [
+      Fill a pot large and deep enough for the #i[cabbage] halfway full with water. Bring to a boil. Cut a cone shape out of the bottom of the cabbage to remove much of the stem. Set the cabbage stem-down into the water. Boil, covered, for #u[10 mins] to soften leaves.
+
+      Mix #g(1). Scoop this filling into softened cabbage leaves once they can be handled. Use a toothpick to hold rolls together when necessary.
+
+      Steam rolls, in batches if necessary, for #u[11-13 mins]. Mix #g(2) to make sauce and serve.
+    ],
+  ),
   // recipe(
   //   "main",
   //   "title",
