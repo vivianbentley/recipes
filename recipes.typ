@@ -924,6 +924,37 @@
   ),
   recipe(
     "main",
+    "cod & lemon butter sauce",
+    adapted-from: "Jan 26 p18",
+    image-path: "imgs/cod+lemon-butter-sauce.png",
+    (
+      ([1#half lb], [golden potatoes], [cut into #half-in cubes]),
+      none,
+      ([#frac(1,3) cup], [flour], [sprinkled onto plate]),
+      ([1 lb], [cod], [patted dry]),
+      1,
+      ([1], [large yellow onion], [finely chopped]),
+      ([4 Tbsp], [butter#mult]),
+      2,
+      ([1/3 cup], [lemon juice]),
+      ([4 tsp], [Dijon mustard]),
+      ([2 tsp], [honey]),
+      3,
+      ([#frac(1,4) cup], [tarragon leaves]),
+      ([2 Tbsp], [butter#mult]),
+    ),
+    [
+      Preheat oven to #u[450˚F]. Add #i[oil] and #i[salt] to #i[potatoes], then add to baking sheet with parchment paper. Roast until golden brown underneath, #u[\~30 mins].
+
+      Season #i[cod] with #i[salt] and #i[pepper]. Lay one side down in #i[flour], shake off excess, and place flour-side up on another plate. Heat #i[oil] in large skillet over #u[medium-high], then fry cod flour-side down until golden brown underneath, #u[\~5-7 mins]. Flip and cook on the other side for #u[1 min]. Remove from skillet and set to the side.
+
+      In the same skillet, add #g(1), cooking and stirring occasionally until the #i[onion] is slightly softened, #u[1-2 mins]. Add #g(2) and cook, stirring often, until thickened but not completely evaporated, #u[5-6 mins]. Add #g(3), cooking and stirring for #u[1 min].
+
+      Serve by spooning sauce over cooked cod with rosted potatoes on the side.
+    ],
+  ),
+  recipe(
+    "main",
     "miso-marinated salmon",
     (
       ([1 lb], [salmon filet]),
