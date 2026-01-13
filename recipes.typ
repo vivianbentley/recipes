@@ -955,6 +955,40 @@
   ),
   recipe(
     "main",
+    "one-pot chicken and beans",
+    adapted-from: "Jan 26 p24",
+    image-path: "imgs/one-pot-chicken-and-beans.png",
+    (
+      ([2 lb], [chicken thighs], [skinless, boneless, patted dry]),
+      ([2 Tbsp], [cooking oil]),
+      1,
+      ([#half Tbsp], [pepper], [freshly ground]),
+      ([#half Tbsp], [ground cumin]),
+      ([#half Tbsp], [salt]),
+      2,
+      ([1], [cilantro bunch], [tough stems removed, well rinsed]),
+      ([1], [yellow onion], [roughly chopped]),
+      ([1], [green bell pepper], [stem and seeds removed, chopped]),
+      ([6], [garlic cloves]),
+      3,
+      ([1], [can black beans], [rinsed]),
+      ([1#half cup], [dry white rice]),
+      4,
+      ([#half cup], [cotija cheese], [crumbled]),
+      ([1], [lime], [in slices]),
+    ),
+    [
+      Mix #g(1) and use to coat #i[chicken], set aside. Blend #g(2) until mostly smooth, set aside\*. Preheat oven to #u[375˚F]. 
+
+      Heat #i[oil] in large oven-proof skillet over #u[medium-high]. Working in batches if needed, cook #i[chicken] in a single layer, just one side, until it is deeply brown underneath but still raw on top, #u[6-8 mins]. Set aside.
+
+      Cook \*reserved purée on same skillet goddamit at #u[medium] heat. Continue until it reduces to a tomato-paste-like texture, #u[6-8 mins]. Add #g(3), mix and bring to a simmer, then remove from heat. Place half-cooked chicken, browned side up, over the mixture. Cover skillet with foil and place in oven for #u[45 mins]. Let it be the whole time, don't check it. Turn off oven, but leave in the oven for #u[10 mins].
+
+      Serve with #g(4).
+    ],
+  ),
+  recipe(
+    "main",
     "miso-marinated salmon",
     (
       ([1 lb], [salmon filet]),
