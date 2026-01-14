@@ -169,47 +169,47 @@
 // heading styling
 #let category-counter = counter("category")
 #show heading.where(level: 1): it => context {
-  let next-section-location = query(selector(heading.where(level: 1)).after(here(), inclusive: false))
-    .at(0, default: query(<end>).at(0))
+  let next-section-location = query(heading.where(level: 1).after(here(), inclusive: false))
+    .at(0, default: query(<end>).first())
     .location()
-  let child-heading-selector = selector(heading).after(here()).before(next-section-location, inclusive: false)
+  let child-heading-selector = selector(heading.where(level: 2)).after(here()).before(next-section-location, inclusive: false)
   let heading-count = category-counter.get().first()
   let style-indx = calc.rem(heading-count, colors.len())
   let page-color = rgb(colors.at(style-indx))
   let icon = read(recipe-type-symbols.at(style-indx))
-  {
-    set page(
-      fill: page-color.lighten(30%),
-      background: {
-        rect(width: 100% - 20pt, height: 100% - 20pt, stroke: page-color.saturate(20%) + 5pt)
-        place(center + horizon, dy: -80pt - 140pt * int(heading-count == 0), image(bytes(icon.replace("#4d4d4d", page-color.saturate(20%).to-hex())), width: 50% - 30% * int(heading-count == 0)))
-      },
-      numbering: none,
-      margin: 10%,
-      columns: 1,
-    )
-    category-counter.step()
-    if heading-count == 0 {
-      let heading-color = rgb("#2E1F27")
-      v(4cm)
-      align(center, box(stroke: (paint: heading-color, thickness: 2pt), radius: 45pt, inset: 10pt, box(stroke: (paint: heading-color, thickness: 8pt), radius: 40pt, inset: 20pt)[
-        #text(heading-color, 50pt)[some recipes \ i like]
-        #line(stroke: heading-color, length: 30%)
-        #v(0.3cm)
-        #text(heading-color)[_compiled by miles_]
-      ]))
-      v(1fr)
-    }
-    set text(page-color.saturate(50%).darken(20%))
-    v(2cm)
-    text(22pt, align(center, [\- #h(0.5cm) #it.body #h(0.5cm) \-]))
-    v(0.7cm)
-    outline(
-      title: none,
-      target: if heading-count == 0 { selector(heading.where(level: 1)).after(here()) } else { child-heading-selector },
-      indent: 0pt,
-    )
+  set page(
+    fill: page-color.lighten(30%),
+    background: {
+      rect(width: 100% - 20pt, height: 100% - 20pt, stroke: page-color.saturate(20%) + 5pt)
+      place(center + horizon, dy: -80pt - 140pt * int(heading-count == 0), image(bytes(icon.replace("#4d4d4d", page-color.saturate(20%).to-hex())), width: 50% - 30% * int(heading-count == 0)))
+    },
+    numbering: none,
+    margin: 10%,
+    columns: 1,
+  )
+  category-counter.step()
+  if heading-count == 0 {
+    let heading-color = rgb("#2E1F27")
+    v(4cm)
+    align(center, box(stroke: (paint: heading-color, thickness: 2pt), radius: 45pt, inset: 10pt, box(stroke: (paint: heading-color, thickness: 8pt), radius: 40pt, inset: 20pt)[
+      #text(heading-color, 50pt)[some recipes \ i like]
+      #line(stroke: heading-color, length: 30%)
+      #v(0.3cm)
+      #text(heading-color)[_compiled by miles_]
+    ]))
+    v(1fr)
   }
+  set text(page-color.saturate(50%).darken(20%))
+  pad(top:1.5cm, bottom:0.7cm, align(center, heading(level:10, text(22pt)[\- #h(0.5cm) #it.body #h(0.5cm) \-])))
+  outline(
+    title: none,
+    target: if heading-count == 0 {
+      selector(heading.where(level:1)).after(here())
+    } else {
+      child-heading-selector
+    },
+    indent: 0pt,
+  )
 }
 
 // all recipes
@@ -327,7 +327,7 @@
     ),
     [
       Whip #g(1) till light and fluffy.
-      Drizzle #i[tomato] slices with #g(2) and broil until tomatoes start to shrivel. Top #i[french bread] slices with prepared components.
+      Drizzle #i[tomato] slices with #g(2) and #u[broil] until tomatoes start to shrivel. Top #i[french bread] slices with prepared components.
     ],
   ),
   recipe(
@@ -554,7 +554,7 @@
     [
       Preheat oven to #u[425°F], rack in middle. Whisk #g(1), use to coat #i[chicken]. Arrange veggies #gg(2) on baking sheet with parchment paper, salt and drizzle #u[\~1 Tbsp] #i[oil]. Place #i[chicken] on top of veggies, roast #u[13-16 mins]. Meanwhile, mix #g(3) to create sauce for serving\*.
 
-      Leaving chicken in oven, turn on broil. Cook till veggies are tender with some charring and chicken is cooked through and well-browned, #u[9-12 mins].
+      Leaving chicken in oven, turn on #u[broil]. Cook till veggies are tender with some charring and chicken is cooked through and well-browned, #u[9-12 mins].
       
       Cut chicken into strips, and add #u[2 Tbsp] #i[rice vinegar] to veggies if desired. Top rice with veggies, chicken, \*prepared sauce, and sesame seeds.
     ],
@@ -681,7 +681,7 @@
 
       Add #i[pasta], uncooked, with #u[1 cup] #i[water]. Lightly mix contents. Cover pan tightly with foil. Bake #u[23-27 mins].
 
-      Remove pan from oven, turn oven to broil. Remove foil, lightly mix contents. Top pasta with #i[mozzarella] and broil until cheese is golden brown in spots, #u[5-8 mins]. Keep a close eye as it can turn quickly.
+      Remove pan from oven, turn oven to #u[broil]. Remove foil, lightly mix contents. Top pasta with #i[mozzarella] and broil until cheese is golden brown in spots, #u[5-8 mins]. Keep a close eye as it can turn quickly.
     ],
   ),
   recipe(
@@ -793,7 +793,7 @@
 
       Remove pan from heat and add #g(3), stirring until Parmesan is melted.
 
-      Place rack in upper third of oven and turn on broil. Scatter #i[cheese] over pasta and broil until melted and golden brown, #u[2-5 mins], watching closely. Add #i[chives] for serving if desired.
+      Place rack in upper third of oven and turn on #u[broil]. Scatter #i[cheese] over pasta and broil until melted and golden brown, #u[2-5 mins], watching closely. Add #i[chives] for serving if desired.
     ],
   ),
   recipe(
@@ -863,7 +863,7 @@
   recipe(
     "main",
     "gado gado",
-    is-vegetarian: true,
+    is-vegan: true,
     image-path: "imgs/gado-gado.jpg",
     adapted-from: "Apr 24",
     (
@@ -899,6 +899,7 @@
     "main",
     "green chutney chicken",
     adapted-from: "Oct 25 p22",
+    is-gf: true,
     image-path: "imgs/green-chicken-chutney.png",
     (
       1,
@@ -919,7 +920,7 @@
 
       Add #i[chicken] to bowl. Toss to coat. Allow to sit for at least #u[15 min] at room temperature (or overnight in the fridge).
 
-      Set oven to broil, with rack in top slot. Place chicken on tinfoil-lined sheet. Remove when browned and cooked to temperature.
+      Set oven to #u[broil], with rack in top slot. Place chicken on tinfoil-lined sheet. Remove when browned and cooked to temperature.
     ],
   ),
   recipe(
@@ -957,6 +958,7 @@
     "main",
     "one-pot chicken and beans",
     adapted-from: "Jan 26 p24",
+    is-gf: true,
     image-path: "imgs/one-pot-chicken-and-beans.png",
     (
       ([2 lb], [chicken thighs], [skinless, boneless, patted dry]),
@@ -989,56 +991,8 @@
   ),
   recipe(
     "main",
-    "miso-marinated salmon",
-    (
-      ([1 lb], [salmon filet]),
-      1,
-      ([#frac(1,3) cup], [sake]),
-      ([#frac(1,3) cup], [mirin]),
-      ([#frac(1,3) cup], [white miso]),
-      ([3 Tbsp], [sugar]),
-      ([1 tsp], [salt]),
-      2,
-      ([1 cup], [dried rice], [cooked]),
-      ([3 Tbsp], [rice vinegar]),
-      ([3 g], [dried seaweed], [like seasoned laver, crushed])
-    ),
-    [
-      Combine #g(1) to create a marinade. Reserve some for serving. Marinade #i[salmon] #u[1-2 days] in fridge.
-
-      Scrape the marinade off the salmon to discard. Broil the salmon filets on low-middle rack, cooking #u[8 mins] until tops are slightly charred.
-      
-      Combine #g(2). Serve with salmon and reserved marinade.
-    ],
-  ),
-  recipe(
-    "main",
-    "gnocchi",
-    adapted-from: "ANTI-CHEF on YouTube",
-    bon-appetit: false,
-    (
-      ([1.5 lb], [plum tomatoes]),
-      ([1], [yellow onion], [skinned, cut in half]),
-      ([4 Tbsp], [butter]),
-      none,
-      ([4], [golden potatoes], [skinned, coursely diced]),
-      ([2 cup], [flour]),
-      none,
-      ([1 oz], [Parmesan], [grated])
-    ),
-    [
-      Place #i[tomatoes] in boiling water for #u[1 min]. Remove tomato skin once the tomatoes are handleable. Rinse in cold water. Cut lengthwise and remove stems. Cook in covered saucepan for #u[10 mins] over #u[medium] heat. Blend the tomatoes, then add #i[onion] and #i[butter]. Cook uncovered on a slow but steady simmer until reduced, #u[45-90 mins]. Add #i[salt] to taste.
-
-      Meanwhile, boil diced #i[potatoes] until tender and mashable to avoid chunks. Strain potatoes and puree. Add #i[flour] to pureed potato a bit at a time until the dough is soft, smooth and light in color. The exact amount of flour added will differ based on potato size. Roll dough to #u[\~#half-in] cylinders. Cut desired size to make individual gnoccho. I don't care about making them look pretty, figure it out yourself if you do.
-
-      Generously salt water in a large pot and bring to a light boil. Add gnocchi, only enough to cover the bottom of the pot in a single layer at a time. Allow each gnoccho to float to the top and stay there for #u[\~10 secs] before removing.
-
-      Soon after removing, add sauce to gnocchi to avoid sticking. Serve with #i[Parmesan].
-    ],
-  ),
-  recipe(
-    "main",
     "pork and shrimp cabbage rolls",
+    image-path: "imgs/pork-and-shrimp-cabbage-rolls.png",
     adapted-from: "Mar 25 p75",
     (
       ([1], [large cabbage head]),
@@ -1067,6 +1021,57 @@
       Mix #g(1). Scoop this filling into softened cabbage leaves once they can be handled. Use a toothpick to hold rolls together when necessary.
 
       Steam rolls, in batches if necessary, for #u[11-13 mins]. Mix #g(2) to make sauce and serve.
+    ],
+  ),
+  recipe(
+    "main",
+    "miso-marinated salmon",
+    is-gf: true,
+    (
+      ([1 lb], [salmon filet]),
+      1,
+      ([#frac(1,3) cup], [sake]),
+      ([#frac(1,3) cup], [mirin]),
+      ([#frac(1,3) cup], [white miso]),
+      ([3 Tbsp], [sugar]),
+      ([1 tsp], [salt]),
+      2,
+      ([1 cup], [dried rice], [cooked]),
+      ([3 Tbsp], [rice vinegar]),
+      ([3 g], [dried seaweed], [like seasoned laver, crushed])
+    ),
+    [
+      Combine #g(1) to create a marinade. Reserve some for serving. Marinade #i[salmon] #u[1-2 days] in fridge.
+
+      Scrape the marinade off the salmon to discard. Broil the salmon filets on low-middle rack, cooking #u[8 mins] until tops are slightly charred.
+      
+      Combine #g(2). Serve with salmon and reserved marinade.
+    ],
+  ),
+  recipe(
+    "main",
+    "gnocchi",
+    adapted-from: "ANTI-CHEF on YouTube",
+    is-vegetarian: true,
+    bon-appetit: false,
+    (
+      ([1.5 lb], [plum tomatoes]),
+      ([1], [yellow onion], [skinned, cut in half]),
+      ([4 Tbsp], [butter]),
+      none,
+      ([4], [golden potatoes], [skinned, coursely diced]),
+      ([2 cup], [flour]),
+      none,
+      ([1 oz], [Parmesan], [grated])
+    ),
+    [
+      Place #i[tomatoes] in boiling water for #u[1 min]. Remove tomato skin once the tomatoes are handleable. Rinse in cold water. Cut lengthwise and remove stems. Cook in covered saucepan for #u[10 mins] over #u[medium] heat. Blend the tomatoes, then add #i[onion] and #i[butter]. Cook uncovered on a slow but steady simmer until reduced, #u[45-90 mins]. Add #i[salt] to taste.
+
+      Meanwhile, boil diced #i[potatoes] until tender and mashable to avoid chunks. Strain potatoes and puree. Add #i[flour] to pureed potato a bit at a time until the dough is soft, smooth and light in color. The exact amount of flour added will differ based on potato size. Roll dough to #u[\~#half-in] cylinders. Cut desired size to make individual gnoccho. I don't care about making them look pretty, figure it out yourself if you do.
+
+      Generously salt water in a large pot and bring to a light boil. Add gnocchi, only enough to cover the bottom of the pot in a single layer at a time. Allow each gnoccho to float to the top and stay there for #u[\~10 secs] before removing.
+
+      Soon after removing, add sauce to gnocchi to avoid sticking. Serve with #i[Parmesan].
     ],
   ),
   // recipe(
