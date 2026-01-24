@@ -984,7 +984,7 @@
 
       Heat #i[oil] in large oven-proof skillet over #u[medium-high]. Working in batches if needed, cook #i[chicken] in a single layer, just one side, until it is deeply brown underneath but still raw on top, #u[6-8 mins]. Set aside.
 
-      Cook \*reserved purée on same skillet goddamit at #u[medium] heat. Continue until it reduces to a tomato-paste-like texture, #u[6-8 mins]. Add #g(3), mix and bring to a simmer, then remove from heat. Place half-cooked chicken, browned side up, over the mixture. Cover skillet with foil and place in oven for #u[45 mins]. Let it be the whole time, don't check it. Turn off oven, but leave in the oven for #u[10 mins].
+      Cook \*reserved purée on same skillet goddamit at #u[medium] heat. Continue until it reduces to a tomato-paste-like texture, #u[6-8 mins]. Add #g(3) with #u[1#half cup] #i[water], mix and bring to a simmer, then remove from heat. Place half-cooked chicken, browned side up, over the mixture. Cover skillet with foil and place in oven for #u[45 mins]. Let it be the whole time, don't check it. Turn off oven, but leave in the oven for #u[10 mins].
 
       Serve with #g(4).
     ],
