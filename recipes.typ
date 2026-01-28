@@ -984,7 +984,7 @@
 
       Heat #i[oil] in large oven-proof skillet over #u[medium-high]. Working in batches if needed, cook #i[chicken] in a single layer, just one side, until it is deeply brown underneath but still raw on top, #u[6-8 mins]. Set aside.
 
-      Cook \*reserved purée on same skillet goddamit at #u[medium] heat. Continue until it reduces to a tomato-paste-like texture, #u[6-8 mins]. Add #g(3) with #u[1#half cup] #i[water], mix and bring to a simmer, then remove from heat. Place half-cooked chicken, browned side up, over the mixture. Cover skillet with foil and place in oven for #u[45 mins]. Let it be the whole time, don't check it. Turn off oven, but leave in the oven for #u[10 mins].
+      Cook \*reserved purée on same skillet goddamit at #u[medium] heat. Continue until it reduces to a tomato-paste-like texture, #u[6-8 mins]. Add #g(3) and #u[1#half cup] #i[water], mix and bring to a simmer, then remove from heat. Place half-cooked chicken, browned side up, over the mixture. Cover skillet with foil and place in oven for #u[45 mins]. Let it be the whole time, don't check it. Turn off oven, but leave in the oven for #u[10 mins].
 
       Serve with #g(4).
     ],
@@ -1072,6 +1072,38 @@
       Generously salt water in a large pot and bring to a light boil. Add gnocchi, only enough to cover the bottom of the pot in a single layer at a time. Allow each gnoccho to float to the top and stay there for #u[\~10 secs] before removing.
 
       Soon after removing, add sauce to gnocchi to avoid sticking. Serve with #i[Parmesan].
+    ],
+  ),
+  recipe(
+    "main",
+    "white chicken chili",
+    is-gf: true,
+    bon-appetit: false,
+    (
+      
+      ([2 lb], [chicken breast]),
+      ([1], [yellow onion], [diced]),
+      ([32 oz], [low-sodium chicken broth]),
+      2,
+      ([1#half tsp], [cumin]),
+      ([#half tsp], [paprika]),
+      ([#half tsp], [dried oregano]),
+      ([#half tsp], [ground coriander]),
+      ([#half tsp], [chili powder]),
+      ([4], [cloves garlic], [chopped]),
+      3,
+      ([8 oz], [cream cheese]),
+      ([1], [can beans], [15oz or more idk]),
+      ([1], [can corn], [15oz]),
+      4,
+      ([], [tortilla chips]),
+      ([], [green salsa]),
+      ([], [cilantro]),
+    ),
+    [
+      Cook #u[chicken] breast by your preferred method and shred (TIL try using your Kitchen-Aid to shred the chicken, idk bruv it works, Madi took away the chicken and came back and it was perfectly shredded and I looked in awe and she just pointed at the Kitchen-Aid).
+      
+      Add a little #i[oil] to a large pan, heat to #u[medium]. Add #i[onion] and cook, stirring frequently, until softened and browned, #u[\~8 mins]. Add #g(1) and cook for another #u[2 mins]. Add #i[chicken broth] and bring to a low boil. Add #g(2) and stir until homogeneous. Add previously-shredded #i[chicken], fold in. Serve with #g(4) as desired.
     ],
   ),
   // recipe(
