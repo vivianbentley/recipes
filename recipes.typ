@@ -56,16 +56,19 @@
       fill: blue.desaturate(30%),
       size: 12pt,
       inset: 0pt,
-      [#set align(center + horizon); #rotate(45deg, text(if dietary-type == "gf" { 7pt } else { 5pt }, white)[#upper(
+      [#set align(center + horizon); #rotate(45deg, text(7pt, white)[#upper(
           dietary-type,
         )])],
     ))
-  } else {
+  }
+  if dietary-type in ("nf",) {
     circle(
+      fill: green.darken(10%).desaturate(50%),
       radius: 7pt,
       inset: 0pt,
-      fill: green.darken(10%).desaturate(50%),
-      text(7pt, white)[#set align(center + horizon); #if dietary-type == "vegan" [V#h(1pt);V] else [V] ],
+      [#set align(center + horizon); #rotate(0deg, text(7pt, white)[#upper(
+          dietary-type,
+        )])],
     )
   }
 }
@@ -110,7 +113,7 @@
 }
 
 // recipe function
-#let recipe-types = ("outline", "note", "side", "main", "treat")
+#let recipe-types = ("outline", "breakfast", "side", "main", "treat")
 #let recipe-type-symbols = (
   "icons/hat.svg",
   "icons/shakers.svg",
@@ -123,19 +126,18 @@
   title,
   ingredients,
   description,
-  is-vegan: false,
-  is-vegetarian: false,
+  is-nf: false,
   is-gf: false,
   is-colbreak: true,
   adapted-from: none,
-  bon-appetit: true,
+  bon-appetit: false,
   image-path: none,
   image-above: false,
   image-below: false,
 ) = {
   assert(recipe-type in recipe-types, message: "bad recipe type >:(")
-  let meat-dietary-type = if is-vegan { "vegan" } else if is-vegetarian { "vegetarian" } else { none }
   let gluten-freeable = if is-gf { "gf" } else { none }
+  let nut-freeable = if is-nf { "nf" } else { none }
   // standard image size: 390x975
   let recipe-image = if image-path != none {
     image(image-path, width: 100%, height: if image-above or image-below { 1fr } else { 100% })
@@ -150,10 +152,10 @@
       #block(width: 100%)[
         #show heading: title => align(center, underline(text(15pt, title), offset: 7pt, extent: -9pt))
         == #title
-        #if meat-dietary-type != none {
+        #if nut-freeable != none {
           place(
             top + right,
-            dietary-symbol(meat-dietary-type),
+            dietary-symbol(nut-freeable),
           )
         }
         #if gluten-freeable != none {
@@ -214,10 +216,10 @@
       radius: 40pt,
       inset: 20pt,
     )[
-      #text(heading-color, 50pt)[some recipes \ i like]
+      #text(heading-color, 50pt)[Favorite \ Recipes]
       #line(stroke: heading-color, length: 30%)
       #v(0.3cm)
-      #text(heading-color)[_compiled by miles_]
+      #text(heading-color)[_compiled by Vivian and her lover_]
     ]))
     v(1fr)
   }
@@ -239,7 +241,6 @@
   recipe(
     "side",
     "sushi rice",
-    is-vegan: true,
     is-gf: true,
     is-colbreak: false,
     (
@@ -260,7 +261,6 @@
   recipe(
     "side",
     "fried onions",
-    is-vegan: true,
     is-gf: true,
     image-path: "imgs/fried-onions.jpg",
     image-above: true,
@@ -277,7 +277,6 @@
     "side",
     "tomato balsamic cheese bites",
     is-colbreak: false,
-    is-vegetarian: true,
     (
       ([1], [french bread loaf], [sliced and toasted]),
       ([1], [onion], [sliced and caramelized]),
@@ -299,31 +298,8 @@
   ),
   recipe(
     "side",
-    "eggnog",
-    is-vegetarian: true,
-    is-gf: true,
-    (
-      1,
-      ([2 cup], [milk]),
-      ([1 cup], [heavy cream]),
-      2,
-      ([6], [egg yolks]),
-      ([#half cup], [sugar]),
-      ([#half tsp], [salt]),
-      3,
-      ([1 tsp], [vanilla]),
-      ([#frac(1, 4) tsp], [cinnamon]),
-      ([#frac(1, 4) tsp], [nutmeg]),
-      ([#frac(1, 4) tsp], [cloves]),
-    ),
-    [
-      Scald #g(1). Whisk #g(2) until whitened. Mix in scalded milk bit by bit. Reheat this mixture at a very low temperature, no boiling, until thickened. Mix in #g(3). Chill and serve.
-    ],
-  ),
-  recipe(
-    "side",
     "boullion-baked tofu",
-    is-vegan: true,
+    is-nf: true,
     is-gf: true,
     image-path: "imgs/bouillon-baked-tofu.png",
     image-above: true,
@@ -350,7 +326,6 @@
     "miso-tahini & tofu grain bowls",
     adapted-from: "Apr 25 p20",
     image-path: "imgs/tofu-grain-bowl.png",
-    is-vegan: true,
     (
       ([1], [firm tofu package], [(\~14oz) pressed, cubed, patted dry]),
       1,
@@ -388,7 +363,6 @@
   recipe(
     "main",
     "gado gado",
-    is-vegan: true,
     image-path: "imgs/gado-gado.jpg",
     adapted-from: "Apr 24",
     (
@@ -425,12 +399,34 @@
   //   "title",
   //   adapted-from: "May 25 p38",
   //   (
-  //     ([1 lb], [ground pork], [wow]),
+  //     ([1 lb], [tofu], [wow]),
   //   ),
   //   [
   //     description
   //   ],
   // ),
+  recipe(
+    "breakfast",
+    "Chia Seed Pudding",
+    is-gf: true,
+    is-nf: true,
+    image-path: "imgs/chia-seed-pudding.jpg",
+    image-above: true,
+    adapted-from: "PlantYou",
+    (
+      ([½ cup], [], [fruit of choice (mango for yellow, raspberries for pink, blueberries for purple)]),
+      ([¾ cup], [], [unsweetened plant-based milk (soy, almond, cashew, or oat)]),
+      ([¼ cup], [], [coconut milk]),
+      ([1 teaspoon], [], [pure maple syrup]),
+      ([1 teaspoon], [], [vanilla extract]),
+      ([3 tablespoons], [], [chia seeds]),
+      ([1 cup], [], [unsweetened Vegan Yogurt]),
+    ),
+    [
+      In a blender, combine the fruit, plant-based milk, coconut milk, maple syrup, and vanilla. Transfer the mixture to a sealable container and stir in the chia seeds until evenly dispersed.
+      Cover and allow to set in the fridge for at least 2 hours. Once thickened, transfer to jars with your vegan yogurt of choice on top.
+    ],
+  ),
 )
 
 #for i in recipe-types.map(recipe-type => [
