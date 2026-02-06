@@ -1,5 +1,5 @@
 // general set rules
-#set text(font: "Avenir")
+#set text(font: "libertinus serif")
 #set par(
   first-line-indent: 0.5cm,
   spacing: 9pt,
@@ -238,131 +238,103 @@
 
 // all recipes
 #let all-recipes = (
-  recipe(
-    "side",
-    "sushi rice",
-    is-gf: true,
-    is-colbreak: false,
-    (
-      ([2 cup], [dry white rice]),
-      ([3 cup], [water]),
-      2,
-      ([#half cup], [rice vinegar]),
-      ([1 Tbsp], [cooking oil]),
-      ([#frac(1, 4) cup], [white sugar]),
-      ([1 tsp], [salt]),
-    ),
-    [
-      Rinse #i[rice] under cold water in colander until it runs clear. Add to pan with #i[water], set to #u[medium-high]. Bring to boil, then reduce heat to #u[low]. Cover until water is absorbed, #u[\~20 mins].
-
-      Add #g(1) to sauce pan over #u[medium] heat until sugar dissolved. Add to cooked rice, mix until liquid is absorbed.
-    ],
-  ),
-  recipe(
-    "side",
-    "fried onions",
-    is-gf: true,
-    image-path: "imgs/fried-onions.jpg",
-    image-above: true,
-    (
-      ([3], [yellow onions], [cut into strips]),
-      ([2 Tbsp], [corn starch]),
-      ([1 cup], [frying oil]),
-    ),
-    [
-      Heat #i[oil]. Mix #i[onions] in #i[corn starch] until well-coated. Fry in pot until golden and crispy.
-    ],
-  ),
-  recipe(
-    "side",
-    "tomato balsamic cheese bites",
-    is-colbreak: false,
-    (
-      ([1], [french bread loaf], [sliced and toasted]),
-      ([1], [onion], [sliced and caramelized]),
-      ([3], [tomatoes], [#frac(1, 4, inch: true) slices]),
-      1,
-      ([#half cup], [cream cheese]),
-      ([#half cup], [sour cream]),
-      ([1 tsp], [pepper]),
-      ([1], [garlic clove], [finely chopped]),
-      ([2], [green onions], [for chives]),
-      2,
-      ([1 Tbsp], [balsamic vinegar]),
-      ([1 Tbsp], [olive oil]),
-    ),
-    [
-      Whip #g(1) till light and fluffy.
-      Drizzle #i[tomato] slices with #g(2) and #u[broil] until tomatoes start to shrivel. Top #i[french bread] slices with prepared components.
-    ],
-  ),
-  recipe(
-    "side",
-    "boullion-baked tofu",
-    is-nf: true,
-    is-gf: true,
-    image-path: "imgs/bouillon-baked-tofu.png",
-    image-above: true,
-    adapted-from: "Nov 24 p32",
-    (
-      ([1], [firm tofu package], [(\~14oz) pressed, cubed, patted dry]),
-      1,
-      ([2 tsp], [vegetable boullion paste]),
-      ([#half tsp], [pepper]),
-      ([#half tsp], [garlic powder]),
-      ([#half tsp], [sugar]),
-      ([2 Tbsp], [olive oil]),
-      none,
-      ([1 Tbsp], [corn starch]),
-    ),
-    [
-      Mix #g(1) and toss with #i[tofu]. Cover and let sit at least #u[15 mins]. Prepare oven (middle rack, #u[400°F]). Lightly oil parchment paper on rimmed baking sheet.
-
-      Uncover #i[tofu] and sprinkle on #i[corn starch]. Toss to coat. Arrange tofu on prepared sheet, not touching each other. Bake until golden brown and crispy, #u[30-35 mins].
-    ],
-  ),
-  recipe(
-    "main",
-    "miso-tahini & tofu grain bowls",
-    adapted-from: "Apr 25 p20",
-    image-path: "imgs/tofu-grain-bowl.png",
-    (
-      ([1], [firm tofu package], [(\~14oz) pressed, cubed, patted dry]),
-      1,
-      ([1#half cup], [dry brown rice], [rinsed until water runs clear]),
-      ([#half cup], [dry quinoa]),
-      2,
-      ([8 oz], [red cabbage], [thinly sliced]),
-      ([3 Tbsp], [rice vinegar#mult]),
-      ([2 tsp], [honey#mult]),
-      ([#half tsp], [salt]),
-      none,
-      ([1 Tbsp], [soy sauce]),
-      3,
-      ([2], [broccoli bunches], [cut into florets with long stems]),
-      ([1 tsp], [red pepper flakes]),
-      4,
-      ([3 cup], [miso]),
-      ([2 Tbsp], [tahini]),
-      ([#frac(3, 4) tsp], [turmeric]),
-      ([2 tsp], [honey#mult]),
-      ([2 Tbsp], [rice vinegar#mult]),
-      none,
-      ([1], [avocado], [thinly sliced]),
-    ),
-    [
-      Preheat oven to #u[450°F]. Bring grains #gg(1) and #u[2#half cup] #i[water] to a boil in medium saucepan. Cover tightly with lid, reduce heat to #u[low]. Cook until grains are tender and liquid is absorbed, #u[40 mins]. Meanwhile, combine #g(2) in large bowl and vigorously massage with hands. Set aside for serving.
-
-      Arrange #i[tofu] on rimmed baking sheet, drizzle with #i[soy sauce] and #u[3 Tbsp] #i[olive oil]. Roast until lightly browned, #u[9-11 mins]. Combine #g(3) and roast alongside tofu until starting to char, #u[15-20 mins].
-
-      Whisk #g(4) to make sauce for serving.
-
-      Assemble bowls with components and serve.
-    ],
-  ),
+  // recipe(
+  //   "side",
+  //   "sushi rice",
+  //   is-gf: true,
+  //   is-colbreak: false,
+  //   (
+  //     ([2 cup], [dry white rice]),
+  //     ([3 cup], [water]),
+  //     2,
+  //     ([#half cup], [rice vinegar]),
+  //     ([1 Tbsp], [cooking oil]),
+  //     ([#frac(1, 4) cup], [white sugar]),
+  //     ([1 tsp], [salt]),
+  //   ),
+  //   [
+  //     Rinse #i[rice] under cold water in colander until it runs clear. Add to pan with #i[water], set to #u[medium-high]. Bring to boil, then reduce heat to #u[low]. Cover until water is absorbed, #u[\~20 mins].
+  //     Add #g(1) to sauce pan over #u[medium] heat until sugar dissolved. Add to cooked rice, mix until liquid is absorbed.
+  //   ],
+  // ),
+  // recipe(
+  //   "side",
+  //   "fried onions",
+  //   is-gf: true,
+  //   image-path: "imgs/fried-onions.jpg",
+  //   image-above: true,
+  //   (
+  //     ([3], [yellow onions], [cut into strips]),
+  //     ([2 Tbsp], [corn starch]),
+  //     ([1 cup], [frying oil]),
+  //   ),
+  //   [
+  //     Heat #i[oil]. Mix #i[onions] in #i[corn starch] until well-coated. Fry in pot until golden and crispy.
+  //   ],
+  // ),
+  // recipe(
+  //   "side",
+  //   "boullion-baked tofu",
+  //   is-nf: true,
+  //   is-gf: true,
+  //   image-path: "imgs/bouillon-baked-tofu.png",
+  //   image-above: true,
+  //   adapted-from: "Nov 24 p32",
+  //   (
+  //     ([1], [firm tofu package], [(\~14oz) pressed, cubed, patted dry]),
+  //     1,
+  //     ([2 tsp], [vegetable boullion paste]),
+  //     ([#half tsp], [pepper]),
+  //     ([#half tsp], [garlic powder]),
+  //     ([#half tsp], [sugar]),
+  //     ([2 Tbsp], [olive oil]),
+  //     none,
+  //     ([1 Tbsp], [corn starch]),
+  //   ),
+  //   [
+  //     Mix #g(1) and toss with #i[tofu]. Cover and let sit at least #u[15 mins]. Prepare oven (middle rack, #u[400°F]). Lightly oil parchment paper on rimmed baking sheet.
+  //     Uncover #i[tofu] and sprinkle on #i[corn starch]. Toss to coat. Arrange tofu on prepared sheet, not touching each other. Bake until golden brown and crispy, #u[30-35 mins].
+  //   ],
+  // ),
+  // recipe(
+  //   "main",
+  //   "miso-tahini & tofu grain bowls",
+  //   adapted-from: "Apr 25 p20",
+  //   image-path: "imgs/tofu-grain-bowl.png",
+  //   (
+  //     ([1], [firm tofu package], [(\~14oz) pressed, cubed, patted dry]),
+  //     1,
+  //     ([1#half cup], [dry brown rice], [rinsed until water runs clear]),
+  //     ([#half cup], [dry quinoa]),
+  //     2,
+  //     ([8 oz], [red cabbage], [thinly sliced]),
+  //     ([3 Tbsp], [rice vinegar#mult]),
+  //     ([2 tsp], [honey#mult]),
+  //     ([#half tsp], [salt]),
+  //     none,
+  //     ([1 Tbsp], [soy sauce]),
+  //     3,
+  //     ([2], [broccoli bunches], [cut into florets with long stems]),
+  //     ([1 tsp], [red pepper flakes]),
+  //     4,
+  //     ([3 cup], [miso]),
+  //     ([2 Tbsp], [tahini]),
+  //     ([#frac(3, 4) tsp], [turmeric]),
+  //     ([2 tsp], [honey#mult]),
+  //     ([2 Tbsp], [rice vinegar#mult]),
+  //     none,
+  //     ([1], [avocado], [thinly sliced]),
+  //   ),
+  //   [
+  //     Preheat oven to #u[450°F]. Bring grains #gg(1) and #u[2#half cup] #i[water] to a boil in medium saucepan. Cover tightly with lid, reduce heat to #u[low]. Cook until grains are tender and liquid is absorbed, #u[40 mins]. Meanwhile, combine #g(2) in large bowl and vigorously massage with hands. Set aside for serving.
+  //     Arrange #i[tofu] on rimmed baking sheet, drizzle with #i[soy sauce] and #u[3 Tbsp] #i[olive oil]. Roast until lightly browned, #u[9-11 mins]. Combine #g(3) and roast alongside tofu until starting to char, #u[15-20 mins].
+  //     Whisk #g(4) to make sauce for serving.
+  //     Assemble bowls with components and serve.
+  //   ],
+  // ),
   recipe(
     "main",
-    "gado gado",
+    "Gado Gado",
     image-path: "imgs/gado-gado.jpg",
     adapted-from: "Apr 24",
     (
@@ -397,6 +369,8 @@
   // recipe(
   //   "treat",
   //   "title",
+  //     is-gf: true,
+  // is-nf: true,
   //   adapted-from: "May 25 p38",
   //   (
   //     ([1 lb], [tofu], [wow]),
@@ -427,6 +401,227 @@
       Cover and allow to set in the fridge for at least 2 hours. Once thickened, transfer to jars with your vegan yogurt of choice on top.
     ],
   ),
+  recipe(
+    "side",
+    "Black Bean Salad",
+    image-path: "imgs/blackbeansalad.jpg",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "Mystery Magazine",
+    (
+      ([¾ cup], [olive oil]),
+      ([2 teaspoons], [maple syrup]),
+      ([juice of 3], [limes]),
+      ([2 cans (15-ounce)], [black beans], [rinsed and drained]),
+      ([1 can], [corn]),
+      ([1], [bell pepper], [diced]),
+      ([1 bunch], [scallions], [chopped]),
+      ([½ cup], [fresh cilantro], [chopped]),
+      ([to taste], [salt]),
+      ([to taste], [pepper]),
+      ([1], [avocado], [diced]),
+      ([as needed], [tortilla chips]),
+    ),
+    [In a small bowl, whisk together the olive oil, maple syrup, and lime juice.
+      Add the black beans, corn, bell pepper, scallions, and cilantro and toss to combine
+      Season with salt and pepper to taste.
+      Gently fold in the diced avocado just before serving.
+      Serve chilled or at room temperature with tortilla chips
+
+      description
+    ],
+  ),
+  recipe(
+    "main",
+    "Rajma",
+    is-gf: true,
+    is-nf: true,
+    image-path: "imgs/rajma.jpg",
+    adapted-from: "The Recipe Hut",
+    (
+      1,
+      ([2–3 tablespoons], [olive oil]),
+      ([1 teaspoon], [cumin seeds]),
+      ([2–3], [cloves]),
+      ([7–8], [black peppercorns]),
+      ([1 large], [cardamom pod]),
+      ([2], [bay leaves]),
+      ([1 large], [onion], [finely chopped]),
+      ([pinch], [salt]),
+      ([1 tablespoon], [fresh ginger], [grated]),
+      ([1 tablespoon], [garlic], [minced]),
+      ([3 medium], [tomatoes], [pureed]),
+      ([1/4 teaspoon], [turmeric powder]),
+      ([to taste], [salt]),
+      ([2 heaped teaspoons], [coriander powder]),
+      ([1 teaspoon], [roasted cumin powder]),
+      ([1/2 teaspoon], [red chili powder]),
+      ([1 cup], [dried kidney beans], [washed]),
+      ([4 cups], [water]),
+      ([1 teaspoon], [dried fenugreek leaves]),
+      ([2–3], [green chilies]),
+      ([as needed], [fresh cilantro], [chopped]),
+      ([1/2 teaspoon], [garam masala]),
+      2,
+      ([1 1/2 cups], [basmati rice], [washed and soaked]),
+      ([1 teaspoon], [cumin seeds]),
+      ([1 1/2 cups], [water]),
+      ([1 teaspoon], [salt]),
+      ([1 1/2 teaspoons], [vegetable oil]),
+    ),
+    [Sauté the Spices:
+      Heat 2-3 tbsp olive oil in a pot. Add 1 tsp cumin seeds and let it splutter.
+      Add 2-3 cloves, 7-8 peppercorns, 1 cardamom pod, and 2 bay leaves. Sauté for 1 minute.
+      Add 1 finely chopped onion and cook for 2-3 minutes until translucent, adding a pinch of salt.
+      Add 1 tbsp grated ginger and 1 tbsp minced garlic. Cook for 2-3 minutes until fragrant.
+      Add 3 pureed tomatoes and cook for 10 minutes until the oil separates from the masala.
+      Stir in 1/4 tsp turmeric, salt to taste, 2 tsp coriander powder, 1 tsp roasted cumin powder, and 1/2 tsp red chili powder. Cook for 1 minute.
+      Add 3 cans of rinsed red kidney beans and 3 cups of water. Stir well.
+      Leave uncovered and cook for 25 minutes or until the beans have softened and absorbed the flavors.
+      While the rajma is cooking start the rice. Rinse rice 3 times, then add water, salt, oil, and cumin seeds.
+      After cooking, taste the rajma and adjust salt and spices as needed.
+      Add 1 tsp kasoori methi, 2-3 whole green chilies, and fresh cilantro to the rajma. Cook an additional 2-3 minutes
+      Stir in 1/2 tsp garam masala and additional cilantro. Serve hot with rice.
+      description
+    ],
+    image-above: true,
+  ),
+  recipe(
+    "main",
+    "White Bean Chili",
+    image-path: "imgs/whitebeanchili.jpg",
+    image-above: true,
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "Aunty and Uncle family recipe",
+    (
+      ([3 tablespoons], [avocado oil]),
+      ([2 cups], [yellow onion], [diced]),
+      ([3 cloves], [garlic], [minced]),
+      ([1 lb], [ground Impossible meat]),
+      ([2 teaspoons], [salt]),
+      ([1 teaspoon], [black pepper]),
+      ([2 teaspoons], [ground cumin]),
+      ([1 1/2 teaspoons], [dried oregano]),
+      ([1 teaspoon], [ground coriander]),
+      ([1 1/2 teaspoons], [chili powder]),
+      ([1/2 teaspoon], [cayenne pepper]),
+      ([2–4 ounces], [green chilies], [diced, undrained]),
+      ([3 cans], [white beans], [undrained]),
+      ([2 cups], [vegetable broth]),
+      ([2], [bay leaves]),
+    ),
+    [ In a large pot, heat 3 tbsp avocado oil over medium heat.
+      Add 2 cups diced yellow onion and 3 cloves minced garlic. Sauté for about 5 minutes until the onions are softened.
+      Add 1 lb ground impossible meat to the pot. Season with 2 tsp salt and 1 tsp black pepper. Cook until the impossible meat is browned and fully cooked.
+      Stir in 2 tsp cumin, 1½ tsp oregano, 1 tsp coriander, 1½ tsp chili powder, and ½ tsp cayenne pepper. Cook for 1-2 minutes until the spices become fragrant.
+      Add 2-4 oz diced green chilies (undrained), 2 cans of white beans (undrained), 2 cups veggie broth, and 2 bay leaves. Stir everything together.
+      In a blender or food processor, blend 1 can of white beans into a smooth puree. Add this puree to the pot and stir well.
+      Bring the mixture to a boil, then reduce the heat to a simmer. Let it cook for about 30-40 minutes, stirring occasionally, to allow the flavors to meld and the chili to thicken.
+      Remove the bay leaves. Serve the chili hot with sourdough bread, sour cream, cheese, and any other desired toppings.
+      description
+    ],
+  ),
+  recipe(
+    "side",
+    "Cauliflower Soup",
+    is-gf: true,
+    is-nf: true,
+    image-path: "imgs/Vegan-Cauliflower-Soup-7.jpg",
+    adapted-from: link("https://happykitchen.rocks/silky-vegan-cauliflower-soup/")[Happy Kitchen],
+    (
+      ([1 head], [cauliflower]),
+      ([1 tablespoon], [olive oil]),
+      ([2 cloves], [garlic], [minced]),
+      ([2+2 sprigs], [thyme]),
+      ([1 #frac(1, 2) cups], [vegetable stock]),
+      ([1 can], [light coconut milk]),
+      ([to taste], [salt]),
+      ([to taste], [freshly ground black pepper]),
+      ([4 tablespoons], [pomegranate seeds], [to garnish]),
+    ),
+    [Divide the cauliflower head into florets or roughly chop it.
+      Sauté 2 cloves minced garlic in 1 tablespoon olive oil in a large skillet until fragrant, for about 2 minutes. Add 1 1/2 cups vegetable stock, 2 thyme sprigs and cauliflower florets. Bring to a boil, cover, reduce the heat and cook for 15-20 minutes, until the cauliflower is nice and soft.
+      Discard the thyme and blend until smooth, using a blender.
+      Add 1/2 cup light coconut milk and season with salt and freshly ground black pepper to taste. Garnish with 4 tablespoons pomegranate seeds and 2 sprigs fresh thyme.
+      description
+    ],
+  ),
+  //
+  recipe(
+    "main",
+    "Spicy Crunchy Tofu",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "The Korean Vegan Cookbook",
+    (
+      1,
+      ([1 block], [firm tofu], [drained and cut into cubes]),
+      ([3 tablespoons], [potato starch]),
+      ([1/2 teaspoon], [salt]),
+      ([1/4 teaspoon], [black pepper]),
+      ([1/2 teaspoon], [onion powder]),
+      ([1/2 teaspoon], [garlic powder]),
+      ([for frying], [vegetable oil]),
+      2,
+      ([2 tablespoons], [brown rice syrup]),
+      ([2 tablespoons], [water]),
+      ([2 tablespoons], [soy sauce]),
+      ([1 tablespoon], [vinegar], [rice or white]),
+      ([1 teaspoon], [potato starch]),
+      ([1 teaspoon], [gochujang]),
+      ([1/4 teaspoon], [black pepper]),
+      3,
+      ([1/2], [red onion], [finely diced]),
+      ([1 bunch], [celery], [chopped]),
+      ([1 cup], [dried Szechuan red peppercorns]),
+      ([2], [scallions], [chopped]),
+      ([for stir-frying], [olive oil]),
+    ),
+    [In a large bowl, mix together 3 tbsp potato starch, 1/2 tsp salt, 1/4 tsp black pepper, 1/2 tsp onion powder, and 1/2 tsp garlic powder.
+      Add the tofu cubes to the bowl and toss to coat evenly with the potato starch mixture.
+      Heat enough vegetable oil in a large nonstick skillet over medium-high heat to generously coat the surface.
+      Once the oil is hot and shimmering, add the tofu cubes in a single layer, making sure they don’t touch each other (you may need to work in batches).
+      Cook the tofu for about 3 minutes on one side until it browns, then flip and cook for another 3 minutes on the other side.
+      While that tofu is frying is a great time to start cooking the rice.
+      Once browned, transfer the tofu to a wire rack to drain excess oil.
+      In a small bowl, whisk together 2 tbsp brown rice syrup, 2 tbsp water, 2 tbsp soy sauce, 1 tbsp vinegar, 1 tsp potato starch, 1 tsp gochugaru, and 1/4 tsp black pepper.
+      In a large wok or skillet, heat olive oil over medium-high heat.
+      Add 1/2 diced red onion, chopped celery and 1 cup dried Szechuan red chilies. Sauté for about 3 minutes until the onion softens.
+      Pour the prepared sauce into the wok with the sautéed vegetables and cook for about 1 minute, stirring until the sauce thickens.
+      Remove from heat and gently stir in the fried tofu, making sure each piece is coated with the sauce.
+      Garnish with chopped scallions.
+      Serve immediately while the tofu is crispy.
+      description
+    ],
+  ),
+  // recipe(
+  //   "treat",
+  //   "title",
+  //     is-gf: true,
+  // is-nf: true,
+  //   adapted-from: "May 25 p38",
+  //   (
+  //     ([1 lb], [tofu], [wow]),
+  //   ),
+  //   [
+  //     description
+  //   ],
+  // ),
+  // recipe(
+  //   "treat",
+  //   "title",
+  //     is-gf: true,
+  // is-nf: true,
+  //   adapted-from: "May 25 p38",
+  //   (
+  //     ([1 lb], [tofu], [wow]),
+  //   ),
+  //   [
+  //     description
+  //   ],
+  // ),
+  //
 )
 
 #for i in recipe-types.map(recipe-type => [
@@ -435,3 +630,7 @@
 ]) { i }
 
 #box()<end>
+
+
+// git status
+//
