@@ -1,3 +1,15 @@
+// To Do:
+// How to optimize so a recipe stays on the same page (images don't get orphaned)
+// Add intro page
+// How to group salads and soups together (or alphabetical sort?)
+// Add index by ingredients?
+// Add cook time / serving size
+// add Ella's manapua recipe
+// add ella's cookie gun recipe
+
+
+
+
 // general set rules
 #set text(font: "libertinus serif")
 #set par(
@@ -20,16 +32,11 @@
 #let group-divide-color = maroon
 #let u(txt) = text(weight: "black", txt)
 #let i(txt) = text(eastern, weight: "black", txt)
-#let gg(num, p: true) = [#if p [(];g  roup *#text(group-divide-color, numbering(group-num, num))*#if p [)]]
+#let gg(num, p: true) = [#if p [(];group *#text(group-divide-color, numbering(group-num, num))*#if p [)]]
 #let g(num) = gg(num, p: false)
 #let status(txt, supp: "") = text(luma(70%))[#v(0cm) #align(right)[_#supp #txt;_]]
-#let colors = (
-  "#D88C9A",
-  "#F2D0A9",
-  "#F1E3D3",
-  "#99C1B9",
-  "#8E7DBE",
-)
+
+
 #let frac(num1, num2, inch: false) = [#h(0.15cm)#box[
     #place(
       top + left,
@@ -111,16 +118,31 @@
     ),
   )
 }
-
+// add colors here if you need more sections
+#let colors = (
+  "#D88C9A",
+  "#8FDFFA",
+  "#F2D0A9",
+  "#F1E3D3",
+  "#99C1B9",
+  "#8E7DBE",
+)
 // recipe function
-#let recipe-types = ("outline", "breakfast", "side", "main", "treat", "bread")
+#let recipe-types = (
+  "outline",
+  "bread",
+  "breakfast",
+  "side",
+  "main",
+  "treat",
+)
 #let recipe-type-symbols = (
   "icons/hat.svg",
+  "icons/bread2.svg",
   "icons/shakers.svg",
   "icons/pin.svg",
   "icons/dish.svg",
-  "icons/toaster.svg",
-  "icons/bread.svg",
+  "icons/cupcake2.svg",
 )
 
 
@@ -145,7 +167,7 @@
   let nut-freeable = if is-nf { "nf" } else { none }
   // standard image size: 390x975
   let recipe-image = if image-path != none {
-    image(image-path, width: 100%, height: if image-above or image-below { 1fr } else { 100% })
+    image(image-path, width: 100%, height: if image-above or image-below { auto } else { 100% })
   } else { none }
   return (
     recipe-type: recipe-type,
@@ -264,7 +286,7 @@
   // ),
   recipe(
     "side",
-    "fried onions",
+    "Fried Onions",
     is-gf: true,
     image-path: "imgs/fried-onions.jpg",
     image-above: true,
@@ -412,6 +434,7 @@
     image-path: "imgs/blackbeansalad.jpg",
     is-gf: true,
     is-nf: true,
+    image-above: true,
     adapted-from: "Mystery Magazine",
     (
       ([¾ cup], [olive oil]),
@@ -432,8 +455,6 @@
       Season with salt and pepper to taste.
       Gently fold in the diced avocado just before serving.
       Serve chilled or at room temperature with tortilla chips
-
-      description
     ],
   ),
   recipe(
@@ -482,12 +503,13 @@
       Add 3 pureed tomatoes and cook for 10 minutes until the oil separates from the masala.
       Stir in 1/4 tsp turmeric, salt to taste, 2 tsp coriander powder, 1 tsp roasted cumin powder, and 1/2 tsp red chili powder. Cook for 1 minute.
       Add 3 cans of rinsed red kidney beans and 3 cups of water. Stir well.
-      Leave uncovered and cook for 25 minutes or until the beans have softened and absorbed the flavors.
+      Leave uncovered and cook for 25 minutes or until the beans have softened and absorbed
+      description
+      description the flavors.
       While the rajma is cooking start the rice. Rinse rice 3 times, then add water, salt, oil, and cumin seeds.
       After cooking, taste the rajma and adjust salt and spices as needed.
       Add 1 tsp kasoori methi, 2-3 whole green chilies, and fresh cilantro to the rajma. Cook an additional 2-3 minutes
       Stir in 1/2 tsp garam masala and additional cilantro. Serve hot with rice.
-      description
     ],
     image-above: true,
   ),
@@ -495,7 +517,7 @@
     "main",
     "White Bean Chili",
     image-path: "imgs/whitebeanchili.jpg",
-    image-above: true,
+    image-below: true,
     is-gf: true,
     is-nf: true,
     adapted-from: "Aunty and Uncle family recipe",
@@ -516,15 +538,14 @@
       ([2 cups], [vegetable broth]),
       ([2], [bay leaves]),
     ),
-    [ In a large pot, heat 3 tbsp avocado oil over medium heat.
+    [ In a large pot, heat avocado oil over medium heat.
       Add 2 cups diced yellow onion and 3 cloves minced garlic. Sauté for about 5 minutes until the onions are softened.
       Add 1 lb ground impossible meat to the pot. Season with 2 tsp salt and 1 tsp black pepper. Cook until the impossible meat is browned and fully cooked.
       Stir in 2 tsp cumin, 1½ tsp oregano, 1 tsp coriander, 1½ tsp chili powder, and ½ tsp cayenne pepper. Cook for 1-2 minutes until the spices become fragrant.
-      Add 2-4 oz diced green chilies (undrained), 2 cans of white beans (undrained), 2 cups veggie broth, and 2 bay leaves. Stir everything together.
+      Add 2-4 oz diced green chilies, 2 cans of white beans, 2 cups veggie broth, and 2 bay leaves. Stir everything together.
       In a blender or food processor, blend 1 can of white beans into a smooth puree. Add this puree to the pot and stir well.
       Bring the mixture to a boil, then reduce the heat to a simmer. Let it cook for about 30-40 minutes, stirring occasionally, to allow the flavors to meld and the chili to thicken.
-      Remove the bay leaves. Serve the chili hot with sourdough bread, sour cream, cheese, and any other desired toppings.
-      description
+      Remove the bay leaves. Serve the chili hot with sourdough bread, vegan sour cream, vegan cheese, and any other desired toppings.
     ],
   ),
   recipe(
@@ -532,6 +553,7 @@
     "Cauliflower Soup",
     is-gf: true,
     is-nf: true,
+    image-above: true,
     image-path: "imgs/Vegan-Cauliflower-Soup-7.jpg",
     adapted-from: link("https://happykitchen.rocks/silky-vegan-cauliflower-soup/")[Happy Kitchen],
     (
@@ -549,13 +571,13 @@
       Sauté 2 cloves minced garlic in 1 tablespoon olive oil in a large skillet until fragrant, for about 2 minutes. Add 1 1/2 cups vegetable stock, 2 thyme sprigs and cauliflower florets. Bring to a boil, cover, reduce the heat and cook for 15-20 minutes, until the cauliflower is nice and soft.
       Discard the thyme and blend until smooth, using a blender.
       Add 1/2 cup light coconut milk and season with salt and freshly ground black pepper to taste. Garnish with 4 tablespoons pomegranate seeds and 2 sprigs fresh thyme.
-      description
     ],
   ),
   //
   recipe(
     "main",
     "Spicy Crunchy Tofu",
+    image-below: true,
     is-gf: true,
     is-nf: true,
     image-path: "imgs/spicycrunchytofu.jpg",
@@ -600,7 +622,6 @@
       Remove from heat and gently stir in the fried tofu, making sure each piece is coated with the sauce.
       Garnish with chopped scallions.
       Serve immediately while the tofu is crispy.
-      description
     ],
   ),
   recipe(
@@ -608,6 +629,7 @@
     "Butter Chick'n",
     is-gf: true,
     is-nf: true,
+    image-below: true,
     image-path: "imgs/butterchicken.jpg",
     adapted-from: link("https://www.noracooks.com/vegan-butter-chicken/")[Nora Cooks],
 
@@ -634,13 +656,12 @@
       ([to taste], [cilantro], [chopped]),
     ),
     [Press the tofu. We use a tofu press (one of our most used kitchen gizmos) but you can make a homemade press by placing a heavy pan on top of the tofu with something underneath to soak up the water.
-      Preheat the oven to 400 degrees F and line a baking sheet with parchment paper.
+      Preheat the oven to #u[400°F] and line a baking sheet with parchment paper.
       Slice the tofu into about 6 slices. Now, rip each slice into medium-large pieces. Ripping gives the tofu a great texture for this dish.
-      Add the tofu pieces to a large bowl along with the olive oil, potato starch and salt. Stir gently to coat. Arrange the tofu evenly on the prepared pan, and bake for 25-30 minutes, until golden and crispy.
+      Add the tofu pieces to a large bowl along with the olive oil, potato starch and salt. Stir gently to coat. Arrange the tofu evenly on the prepared pan, and bake for #u[25-30 minutes], until golden and crispy.
       While the tofu bakes, start the rice cooker.
-      Then prepare the sauce: Melt the 2 tablespoons of vegan butter in a large pan over medium-high heat. Saute the onion for 3-4 minutes in the butter, then add the ginger and garlic and cook for 1 more minute. Add the spices, salt, tomato paste and coconut milk. Stir until smooth and combined, then simmer for 5-10 minutes, stirring frequently.
+      Then prepare the sauce: Melt the 2 tablespoons of vegan butter in a large pan over medium-high heat. Saute the onion for #u[3-4 minutes] in the butter, then add the ginger and garlic and cook for 1 more minute. Add the spices, salt, tomato paste and coconut milk. Stir until smooth and combined, then simmer for 5-10 minutes, stirring frequently.
       When the tofu is done baking, add it to the sauce and stir to coat the pieces. Serve over rice. Garnish with chopped fresh cilantro. Enjoy!
-      description
     ],
   ),
   recipe(
@@ -648,6 +669,7 @@
     "Brocolli Cheddar Orzo",
     is-gf: true,
     is-nf: true,
+    image-above: true,
     image-path: "imgs/vegan-broccoli-cheddar-orzo-2.jpg",
     adapted-from: link("https://naturallieplantbased.com/vegan-broccoli-cheddar-orzo/")[Naturallieplantbased],
     (
@@ -675,12 +697,11 @@
       Add in the 1/2 cup milk and 2 cups broccoli florets. Stir until combined. Cover for another 4-5 minutes until broccoli is cooked through.
       Stir in the 1 cup vegan cheddar shreds and 1/4 cup parm until it is melty and creamy.
       Enjoy right away. Feel free to sprinkle some freshly ground pepper on top and/or nutritional yeast.
-      description
     ],
   ),
   recipe(
     "main",
-    "baked sweet potato chaat",
+    "Baked Sweet Potato Chaat",
     adapted-from: "Nov 24 p14",
     image-path: "imgs/sweet-potato-chaat.png",
     is-gf: true,
@@ -699,7 +720,7 @@
       ([#frac(1, 4) cup], [lime juice]),
       ([#frac(1, 4) cup], [olive oil#mult]),
       3,
-      ([1-2], [serves fried onion], [_(see pg. #context locate(label("fried onions")).page())_]),
+      ([1-2], [serves fried onion], [_(see pg. #context locate(label("Fried Onions")).page())_]),
       ([], [plain vegan yogurt], [or vegan sour cream]),
       ([1], [red onion], [finely chopped]),
       ([1], [pomegranate], [for seeds]),
@@ -718,6 +739,7 @@
     "bread",
     "Red Bean Bread",
     is-nf: true,
+    image-below: true,
     adapted-from: "The Korean Vegan Cookbook",
     image-path: "imgs/braided red bean bread1.jpg",
     (
@@ -753,8 +775,6 @@
       In a small bowl, mix #u[2 Tbsp] plant milk with #u[1 Tbsp] maple syrup. Brush over loaves. Sprinkle with sea salt and sesame seeds.
 
       Bake #u[50 mins], until golden brown. Cool completely before slicing.
-
-      description
     ],
   ),
   recipe(
@@ -762,6 +782,7 @@
     "Focacia",
     is-nf: true,
     image-path: "imgs/focaccia.jpg",
+    image-below: true,
     adapted-from: "Bon Appetit",
     (
       ([1 envelope], [active dry yeast], [¼ oz., about 2¼ tsp]),
@@ -774,36 +795,32 @@
       ([], [flaky sea salt], [for finishing]),
       ([2–4 cloves], [garlic]),
     ),
-    [In a small bowl, mix #u[1 cup] warm water, #u[#half cup] warmed plant milk, #u[2 Tbsp] sugar, and #u[2 tsp] active dry yeast. Set aside #u[10 mins], until foamy.
-
-      In a large bowl, combine #u[4 cups] flour, #u[1 tsp] salt, and #u[2 Tbsp] olive oil. Add yeast mixture and stir with a wooden spoon until a dough forms.
-
-      Turn dough onto a floured surface and knead #u[5 mins] until smooth. Shape into a ball, place in a bowl, cover, and let rise in a warm place #u[1 hour], until doubled in size.
-
-      Preheat oven to #u[400°F]. Line a large baking sheet with parchment paper.
-
-      Punch down dough, knead #u[2 mins], and divide in half. Return one half to the bowl and cover.
-
-      Divide remaining dough into #u[3] equal pieces. Roll each into a #u[10×7-inch] rectangle. Spread #u[#half cup] red bean paste over dough, leaving a #u[#half - inch] border. Roll into a log and pinch edges to seal. Repeat to make three stuffed ropes.
-
-      Place ropes side by side on baking sheet. Pinch tops together, then braid by crossing left over middle, right over middle, repeating to the end. Pinch ends to seal.
-
-      Repeat shaping and braiding with remaining dough to form second loaf.
-
-      In a small bowl, mix #u[2 Tbsp] plant milk with #u[1 Tbsp] maple syrup. Brush over loaves. Sprinkle with sea salt and sesame seeds.
-
-      Bake #u[50 mins], until golden brown. Cool completely before slicing.
-
-      description
+    [Whisk one ¼-oz. envelope active dry yeast (about 2¼ tsp.), 2 tsp. honey, and 2½ cups lukewarm water in a medium bowl and let sit 5 minutes or until foamy.
+      Add 5 cups (625 g) all-purpose flour and 5 tsp. Diamond Crystal or 1 Tbsp. Morton kosher salt and mix with a rubber spatula until a dough forms.
+      Pour 4 Tbsp. extra-virgin olive oil into a big bowl. Cover with a silicone lid and let it rise at room temperature until doubled in size, 3–4 hours.
+      Generously butter a 13x9" baking pan. Pour 1 Tbsp. extra-virgin olive oil into center of pan. Keeping the dough in the bowl and using a fork in each hand, gather up edges of dough farthest from you and lift up and over into center of bowl. Give the bowl a quarter turn and repeat process. Do this 2 more times; you want to deflate dough while you form it into a rough ball. Transfer dough to prepared pan. Pour any oil left in bowl over and turn dough to coat it in oil. Let rise, uncovered, in a dry, warm spot until doubled in size, at least 1½ hours and up to 4 hours.
+      Place a rack in middle of oven; preheat to 450°. To see if the dough is ready, poke it with your finger. It should spring back slowly, leaving a small visible indentation. Lightly oil your hands. If using a rimmed baking sheet, gently stretch out dough to fill. Dimple focaccia all over with your fingers, like you’re aggressively playing the piano, creating very deep depressions in the dough (reach your fingers all the way to the bottom of the pan). Drizzle with remaining 1 Tbsp. extra-virgin olive oil and sprinkle with flaky sea salt. Bake focaccia until puffed and golden brown all over, 20–30 minutes.
+      Hold off on this last step until you're ready to serve the focaccia: Melt 4 Tbsp. unsalted butter in a small saucepan over medium heat. Remove from heat. Peel and grate in 2–4 garlic cloves with a Microplane (use 2 cloves if you’re garlic-shy or up to 4 if you love it). Return to medium heat and cook, stirring often, until garlic is just lightly toasted, 30–45 seconds.
+      Brush garlic-butter all over focaccia and slice into squares or rectangles.
     ],
   ),
   recipe(
     "treat",
     "Peanut Butter Bars",
     is-nf: true,
-    adapted-from: "May 25 p38",
+    adapted-from: link(
+      "https://minibatchbaker.com/small-batch-no-bake-chocolate-peanut-butter-bars/",
+    )[Mini Batch Baker],
+    image-path: "imgs/No-Bake-Peanut-Butter-Bars-RC-2010984005.jpg",
     (
-      ([1 lb], [tofu], [wow]),
+      ([], [Bar dough]),
+      ([1/2 cup], [graham cracker crumbs], [60 g], [sub gluten-free cookie crumbs]),
+      ([1/2 cup], [powdered sugar], [60 g], [sub regular sugar]),
+      ([1/4 cup], [plant butter], [melted], [56 g]),
+      ([1/4 cup], [peanut butter], [64 g], [sub other nut/seed butter]),
+      ([], [Chocolate layer]),
+      ([1/3 cup], [chocolate chips], [60 g]),
+      ([1 Tbsp], [peanut butter], [16 g], [sub other nut/seed butter]),
     ),
     [Line a standard loaf pan with parchment paper or muffin liners.
 
@@ -813,165 +830,449 @@
 
       Refrigerate #u[1 hour], then cut into #u[8] squares.
 
-      description
+    ],
+  ),
+  recipe(
+    "main",
+    "Dan Dan Noodles",
+    adapted-from: "Chinese Homestyle",
+    image-path: "imgs/dandannoodle.jpg",
+    image-above: true,
+    (
+      1,
+      ([4 Tbsp], [Chinese sesame paste], [or tahini]),
+      ([#frac(1, 4) cup], [light soy sauce]),
+      ([#frac(1, 4) cup], [Chinkiang vinegar]),
+      ([4 cloves], [garlic], [finely minced]),
+      ([3], [scallions], [thinly sliced]),
+      ([2 Tbsp], [sugar]),
+      ([#frac(1, 3)–1 cup], [chili oil with flakes]),
+      ([1 tsp], [Sichuan peppercorns], [freshly ground]),
+      2,
+      ([8 oz], [white button mushrooms]),
+      ([#frac(1, 2) cup], [whole pecans], [or walnuts]),
+      ([3], [scallions], [coarsely chopped]),
+      ([3 cloves], [garlic], [peeled]),
+      ([1/2 block], [extra-firm tofu]),
+      ([1 Tbsp], [peanut oil], [or vegetable oil]),
+      ([1/3 cup], [Sichuan pickled mustard greens]),
+      ([1 #frac(1, 2) Tbsp], [soy sauce]),
+      ([2 Tbsp], [Shaoxing wine]),
+      3,
+      ([1 lb], [fresh thin wheat noodles]),
+      ([several bunches], [baby bok choy]),
+      ([1/2 cup], [unsalted dry roasted peanuts], [crushed]),
+    ),
+    [In a medium bowl, whisk #u[4 Tbsp] sesame paste, #u[#frac(1, 4) cup] light soy sauce, and #u[#frac(1, 4) cup] Chinkiang vinegar.
+      Stir in #u[4] finely minced garlic cloves, #u[3] thinly sliced scallions, and #u[2 Tbsp] sugar.
+      Mix in #u[#frac(1, 3)–1 cup] chili oil with flakes, adding #u[1 Tbsp] at a time to reach desired heat.
+      Stir in #u[1 tsp] freshly ground Sichuan peppercorns, adding #u[#half tsp] at a time until pleasantly numbing.
+
+      In a food processor, combine #u[8 oz] white button mushrooms, #u[#half cup] whole pecans, #u[3] coarsely chopped scallions, and #u[3] peeled garlic cloves. Pulse until finely chopped.
+      Add #u[#half block] extra-firm tofu and pulse again until evenly chopped but not smooth.
+
+      Heat #u[1 Tbsp] peanut (or vegetable) oil in a skillet over medium heat.
+      Add #u[#frac(1, 3) cup] Sichuan pickled mustard greens and sauté briefly until fragrant.
+      Add tofu–mushroom mixture and cook, stirring, until bottom of pan looks dry, #u[1–2 mins].
+      Stir in #u[1#half Tbsp] soy sauce and #u[2 Tbsp] Shaoxing wine, scraping up browned bits.
+      Reduce heat to medium and cook, stirring occasionally, #u[10 mins], until thickened and paste no longer drips from spatula.
+      Transfer topping to a bowl.
+
+      Boil #u[1 lb] thick fresh noodles according to package instructions.
+      Add baby bok choy to boiling noodles for #u[30–60 secs].
+      Divide noodles and bok choy among serving bowls.
+      Spoon over sauce.
+      Top generously with tofu mixture.
+      Sprinkle with #u[#half cup] crushed roasted peanuts (optional).
+      Mix well and serve.
+    ],
+  ),
+  recipe(
+    "main",
+    "Jackfruit Tacos",
+    is-nf: true,
+    adapted-from: "Provecho",
+    image-above: true,
+    image-path: "imgs/Vegan-Jackfruit-Tacos-1200-1821402596.jpg",
+    (
+      ([5 Tbsp], [avocado oil]),
+      ([#frac(1, 2)], [white onion], [finely chopped]),
+      ([5 cloves], [garlic], [minced]),
+      ([6], [guajillo chiles]),
+      ([1 tsp], [cumin seeds]),
+      ([#frac(1, 2)], [large tomato], [roughly chopped]),
+      ([#frac(1, 2) cup], [low-sodium vegetable broth]),
+      ([1], [large tomato], [roughly chopped]),
+      ([1 Tbsp], [dried oregano]),
+      ([1 Tbsp], [paprika], [or smoked paprika]),
+      ([1 tsp], [fine sea salt]),
+      ([2 cans], [young green jackfruit in water], [2 oz each], [rinsed and drained]),
+      ([8], [corn/flour tortillas]),
+      ([], [pico de gallo], [vegan sour cream], [sliced avocado for topping]),
+      ([], [cilantro], [finely chopped]),
+      ([], [lime wedges], [for squeezing]),
+    ),
+    [Make the sauce
+      In a large skillet over medium heat, warm #u[2 Tbsp] avocado oil.
+      Add #u[#half] finely chopped white onion, #u[5] minced garlic cloves, #u[6] guajillo chiles, and #u[1 tsp] cumin seeds. Cook, stirring, until oil takes on a reddish tint, #u[4 mins] (lower heat if browning too fast).
+      Reduce heat to low and cook, stirring, until guajillos turn reddish brown, #u[2 mins]. Remove guajillos and set aside. Transfer onion–garlic–cumin mixture to a blender.
+      Stem and seed the #u[6] guajillo chiles and add to blender.
+      Add #u[#half cup] fresh orange juice, #u[#half cup] low-sodium vegetable broth, #u[#half large] tomato (roughly chopped), #u[1 Tbsp] dried oregano, #u[1 Tbsp] paprika or smoked paprika, and #u[1 tsp] fine sea salt. Blend until smooth. Set aside.
+
+      Prepare the jackfruit
+      Take #u[2 (20-oz.) cans] young green jackfruit, rinsed and drained. Shred with hands and pat dry. Set aside.
+      Warm a large skillet over medium heat #u[4–5 mins].
+      Add remaining #u[3 Tbsp] avocado oil and heat until shimmering.
+      Add shredded jackfruit and cook, stirring occasionally, until golden brown and crispy, #u[8 mins].
+      Lower heat and cook until deeper brown, #u[5 mins], stirring if sticking.
+      Add #u[1 Tbsp] water, then pour in blended sauce. Bring to a boil.
+      Turn heat to medium, cover partially, and simmer until sauce thickens and most liquid evaporates, #u[12–15 mins].
+
+      Assemble the tacos
+      Warm #u[8] corn or flour tortillas.
+      Add a generous scoop of jackfruit filling to each.
+      Top with pico de gallo, vegan sour cream, sliced avocado (optional), and finely chopped cilantro leaves and tender stems.
+      Serve with lime wedges for squeezing.
+    ],
+  ),
+  recipe(
+    "side",
+    "Eggless Drop Soup",
+    is-nf: true,
+    adapted-from: "Chinese Homestyle",
+    image-path: "imgs/eggdrop.jpg",
+    (
+      ([], [Spice mix]),
+      ([2 Tbsp], [water]),
+      ([4 tsp], [cornstarch/potato starch]),
+      ([#frac(1, 4) tsp], [white pepper powder]),
+      ([#frac(1, 4) tsp], [salt], [or to taste]),
+      ([#frac(1, 8) tsp], [turmeric powder], [for yellow color, optional]),
+      ([], [Soup]),
+      ([4 cups], [water]),
+      ([3], [green onions], [thinly sliced, white and green parts separated]),
+      ([2 slices], [ginger]),
+      ([2 tsp], [mushroom powder]),
+      ([4], [fresh yuba sheets], [or 1 semi-dried yuba sheet, cut into strips]),
+      ([2 tsp], [sesame oil]),
+    ),
+    [Make the spice mix
+      Combine all ingredients in a small bowl and whisk until well blended.
+
+      Cook the soup
+      In a small pot, add water, white part of green onion, and ginger.
+      Bring to a boil over high heat, then reduce to low and simmer.
+
+      Whisk spice mix again until cornstarch is fully dissolved. Pour into soup and stir well. Simmer until slightly thickened, ~#u[30 secs].
+      Add mushroom powder and stir to combine.
+
+      Add yuba sheet and cook #u[1 min], until tender. Taste soup and adjust with salt or mushroom powder if needed.
+
+      Finish & serve
+      Drizzle with sesame oil and sprinkle with green part of green onion. Stir to combine and serve hot.
+
+    ],
+  ),
+  recipe(
+    "main",
+    "Pineapple Fried Rice",
+    image-path: "imgs/friedrice.png",
+    is-gf: true,
+    image-below: true,
+    adapted-from: "Vegan Asian Cookbook",
+    (
+      ([3 cups], [cooked and cooled rice], [leftover is best]),
+      ([14 oz], [extra-firm tofu]),
+      ([3 Tbsp], [neutral oil]),
+      ([#frac(1, 2) tsp], [salt], [divided, plus more to taste]),
+      ([1], [small onion], [diced]),
+      ([1], [red bell pepper], [seeded and diced]),
+      ([], [frozen peas], [desired quantity]),
+      ([2 Tbsp], [temari sauce]),
+      ([2 tsp], [coconut sugar], [or to taste]),
+      ([2 tsp], [curry powder]),
+      ([#frac(1, 2) tsp], [chili powder]),
+      ([#frac(1, 4) tsp], [ground white pepper], [or to taste]),
+      ([2 cups], [pineapple chunks], [fresh or canned, cut into #frac(1, 2)-inch (1.3-cm) cubes]),
+      ([1 cup], [roasted cashews]),
+      ([#frac(1, 2) cup], [chopped scallions], [plus more for garnish]),
+      ([#frac(1, 2) cup], [seeded and diced tomato]),
+    ),
+    [Prepare the rice & tofu
+      Place #u[3 cups] cooked, cooled rice in a large bowl and gently break apart with a spoon. Set aside.
+      Press #u[14 oz] extra-firm tofu for #u[10 mins] to remove excess liquid, then cut into #u[#half - inch] cubes.
+
+      Cook the tofu & vegetables
+      Heat a large skillet or wok over medium-high heat and add #u[3 Tbsp] neutral oil.
+      Add tofu cubes, sprinkle with #u[#frac(1, 4) tsp] salt, and pan-fry, flipping every few minutes, until golden and crisp, ~#u[20 mins]. Move tofu to one side.
+      Add #u[1] small diced onion and #u[1] diced red bell pepper. Sauté ~#u[2 mins] until softened.
+
+      Add rice & seasonings
+      Add rice to skillet. Season with #u[2 Tbsp] soy sauce, #u[2 tsp] coconut sugar, #u[2 tsp] curry powder, #u[#half tsp] chili powder (or sliced chile), and #u[#frac(1, 4) tsp] ground white pepper. Mix well.
+      Add remaining #u[#frac(1, 4) tsp] salt, adjust to taste, and stir-fry until rice is heated through.
+
+      Add fruits & nuts
+      Add #u[1 cup] pineapple cubes and increase heat to high. Stir-fry #u[2–3 mins], stirring occasionally.
+      Add #u[#frac(1, 3) cup] roasted cashews, #u[#half cup] chopped scallions, #u[#half cup] diced tomato, and desired amount of frozen peas. Stir-fry #u[2 mins] more.
+
+      Finish & serve
+      Taste and adjust seasoning. Remove from heat and serve hot, garnished with extra chopped scallions.
+    ],
+  ),
+  recipe(
+    "side",
+    "Warm Cous Cous Spiced Salad",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "America's Test Kitchen",
+    image-path: "imgs/couscous.jpg",
+    (
+      ([], [Couscous & chickpeas]),
+      ([1], [carrot], [peeled and chopped]),
+      ([5 tsp], [extra-virgin olive oil], [divided]),
+      ([#frac(1, 8) tsp], [table salt]),
+      ([#frac(2, 3) cup], [vegetable broth]),
+      ([#frac(1, 2) tsp], [smoked paprika]),
+      ([#frac(1, 4) tsp], [ground cumin]),
+      ([1 can], [chickpeas], [15 oz], [rinsed]),
+      ([#frac(1, 4) cup], [raisins]),
+      ([#frac(1, 4) cup], [chopped fresh parsley or cilantro]),
+      ([2 tsp], [lemon juice], [plus lemon wedges for serving]),
+      ([#frac(1, 2) cup], [pearl couscous]),
+    ),
+    [Cook the couscous
+      In a large saucepan, combine #u[#half cup] pearl couscous, #u[1] chopped carrot, #u[2 tsp] olive oil, and #u[#frac(1, 8) tsp] salt.
+      Cook over medium heat, stirring often, until about half of the grains are golden, ~#u[5 mins].
+
+      Add broth & spices
+      Stir in #u[#frac(2, 3) cup] vegetable broth, #u[#half tsp] smoked paprika, and #u[#frac(1, 4) tsp] ground cumin.
+      Bring to a simmer, reduce heat to low, cover, and cook gently, stirring occasionally, until broth is absorbed and couscous is tender but slightly chewy, ~#u[10–15 mins].
+      Remove from heat and let sit, covered, #u[3 mins].
+
+      Finish & serve
+      Stir in #u[1 (15-oz.) can] rinsed chickpeas, #u[#frac(1, 4) cup] raisins, #u[#frac(1, 4) cup] chopped parsley or cilantro, #u[2 tsp] lemon juice, and remaining #u[1 Tbsp] (3 tsp) olive oil.
+      Season with additional salt and pepper to taste.
+      Serve warm with lemon wedges on the side.
+    ],
+  ),
+  recipe(
+    "side",
+    "Green Salad",
+    image-above: false,
+    image-path: "imgs/Strawberry-Arugula-Salad-with-Hemp-Seeds-and-Brown-Sugar-Pecans-Healthy-quick-and-satisfying-recipe-salad-strawberry-healthy-vegan-glutenfree-minimalistbaker.jpg",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: link("https://minimalistbaker.com/strawberry-arugula-salad/")[Minimalist Baker],
+    (
+      1,
+      ([1 heaping cup], [raw hazelnuts], [roughly chopped]),
+      ([2 tsp], [olive oil], [or melted coconut oil]),
+      ([1 Tbsp], [coconut sugar]),
+      ([2 tsp], [maple syrup]),
+      ([1 pinch], [sea salt]),
+      ([1 pinch], [ground cinnamon]),
+      2,
+      ([2 Tbsp], [balsamic vinegar]),
+      ([2 Tbsp], [extra virgin olive oil]),
+      ([#frac(1, 2) tsp], [maple syrup]),
+      ([1–2 Tbsp], [minced shallot]),
+      ([1 pinch], [sea salt]),
+      ([1 pinch], [black pepper]),
+      3,
+      ([5 oz], [package mixed greens]),
+      ([1 #frac(1, 2) cups], [thinly sliced strawberries]),
+    ),
+    [Toast the hazelnuts
+      Preheat oven to #u[350°F] (#u[176°C]) and line a baking sheet with parchment.
+      Add raw hazelnuts and toast #u[7 mins]. Remove from oven.
+      Add remaining ingredients (#u[oil], #u[coconut sugar], #u[maple syrup], #u[sea salt], #u[cinnamon]) to hazelnuts and toss to combine.
+      Return to oven and roast #u[4–6 mins], until fragrant and golden. Set aside to cool.
+
+      Prepare the dressing
+      Combine all dressing ingredients in a jar or mixing bowl. Shake or whisk vigorously to combine.
+      Taste and adjust: more balsamic for acidity, maple syrup for sweetness, salt or pepper for balance, olive oil for creaminess. Set aside.
+
+      Assemble the salad
+      In a large mixing bowl, add spinach, #u[#half] of the strawberries, and #u[#half] of the roasted hazelnuts.
+      Drizzle with #u[#half] of the dressing and toss to combine.
+      Plate and garnish with remaining strawberries and hazelnuts. Serve with remaining dressing if desired.
+    ],
+  ),
+  recipe(
+    "side",
+    "Pasta Salad",
+    is-nf: true,
+    adapted-from: link("https://foodwithfeeling.com/vegan-pasta-salad-easy/")[Food with Feeling],
+    image-path: "imgs/Vegan-Pasta-Salad-2-683x1024.jpg",
+    (
+      ([1 lb], [pasta], [I used rotini]),
+      ([#frac(1, 2)], [red onion], [thinly sliced]),
+      ([#frac(1, 2) cup], [grape or cherry tomatoes], [halved or quartered]),
+      ([1], [small green bell pepper], [chopped], [about 1 cup]),
+      ([1 can], [sliced black olives], [6 oz]),
+      ([#frac(1, 4) cup], [chopped fresh parsley or cilantro], [I used parsley]),
+      ([], [salt and pepper], [to taste]),
+      ([#frac(1, 3) cup], [olive oil]),
+      ([2 Tbsp], [white balsamic vinegar]),
+      ([#frac(1, 2) tsp], [oregano]),
+      ([1 tsp], [garlic powder]),
+      ([1 tsp], [onion powder]),
+      ([#frac(1, 4) tsp], [crushed red pepper]),
+      ([], [sugar], [good pinch]),
+    ),
+    [Cook the pasta
+      Cook pasta according to package directions until desired doneness. Drain and let cool.
+      If serving cold, run under cold water to cool thoroughly.
+
+      Make the dressing
+      Combine olive oil, vinegar, spices, and sugar. Whisk until fully combined. Set aside.
+
+      Assemble the salad
+      In a large bowl, combine pasta, chopped vegetables, and parsley (or cilantro).
+      Add dressing and toss until pasta and veggies are fully coated.
+      Season with salt and pepper to taste and serve.
+    ],
+  ),
+  recipe(
+    "main",
+    "Curry Lentil Soup",
+    image-path: "imgs/lentil-soup-recipe-580x794.jpg",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: link("https://www.loveandlemons.com/curry-lentil-soup/#wprm-recipe-container-75207")[Love and Lemons],
+    (
+      ([2 Tbsp], [coconut oil]),
+      ([1], [medium onion], [chopped]),
+      ([4 cloves], [garlic], [minced]),
+      ([3 Tbsp], [minced fresh ginger]),
+      ([1 Tbsp], [mild curry powder]),
+      ([#frac(1, 4) tsp], [crushed red pepper flakes], [plus more to taste]),
+      ([1 can], [fire-roasted diced tomatoes], [28 oz]),
+      ([1 cup], [dry French green lentils], [rinsed]),
+      ([2 #frac(1, 2) cups], [water]),
+      ([1 can], [full-fat coconut milk], [14 oz]),
+      ([#frac(1, 2) tsp], [sea salt], [plus more to taste]),
+      ([], [freshly ground black pepper]),
+      ([#frac(1, 2) cup], [chopped fresh cilantro]),
+      ([2 Tbsp], [fresh lime juice]),
+    ),
+    [Cook the aromatics
+      Heat oil in a large pot or Dutch oven over medium heat. Add onion and a pinch of salt. Cook until soft and lightly browned around edges, #u[8–10 mins], reducing heat to low as needed.
+
+      Add spices
+      With heat on low, add garlic, ginger, curry powder, and red pepper flakes. Cook, stirring, until fragrant, ~#u[2 mins].
+
+      Cook the lentils
+      Add tomatoes, lentils, water, coconut milk, #u[#half tsp] salt, and several grinds of black pepper. Bring to a boil, cover, reduce heat, and simmer, stirring occasionally, until lentils are tender, #u[25–35 mins].
+      If too thick, stir in #u[#half–1 cup] more water to reach desired consistency.
+
+      Finish & serve
+      Stir in cilantro and lime juice. Adjust seasoning with salt and pepper. Serve hot.
+
+    ],
+  ),
+  recipe(
+    "breakfast",
+    "Southwest Tofu Scramble",
+    image-path: "imgs/tofuscramble.jpg",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "Minimalist Baker",
+    (
+      1,
+      ([8 oz], [extra-firm tofu]),
+      ([1–2 Tbsp], [olive oil]),
+      ([#frac(1, 4)], [medium red onion], [thinly sliced]),
+      ([#frac(1, 2)], [medium red bell pepper], [thinly sliced]),
+      ([2 cups], [kale], [loosely chopped]),
+      2,
+      ([#frac(1, 2) tsp], [sea salt], [reduce amount for less salty sauce]),
+      ([#frac(1, 2) tsp], [garlic powder]),
+      ([#frac(1, 2) tsp], [ground cumin]),
+      ([#frac(1, 4) tsp], [chili powder]),
+      ([], [water], [to thin]),
+      ([#frac(1, 4) tsp], [turmeric], [optional]),
+      3,
+      ([], [For serving, optional]),
+      ([], [salsa]),
+      ([], [cilantro and/or hot sauce]),
+      ([], [toast, butter, jam]),
+      ([], [breakfast potatoes]),
+      ([], [fresh fruit]),
+    ),
+    [Press the tofu
+      While tofu is draining, prepare the sauce: combine dry spices in a small bowl and add enough water to make a pourable sauce. Set aside.
+
+      Prep vegetables and heat a large skillet over medium heat. Add olive oil, onion, and red pepper. Season with a pinch of salt and pepper and stir. Cook until softened, ~#u[5 mins].
+      Add kale, season with a bit more salt and pepper, cover, and steam #u[2 mins].
+
+      Unwrap tofu and crumble with a fork into bite-sized pieces.
+
+      Move vegetables to one side of the pan. Add tofu and sauté #u[2 mins]. Pour sauce mostly over tofu and a little over the veggies. Stir immediately to evenly coat.
+      Cook #u[5–7 mins], until tofu is slightly browned.
+
+      Serve
+      Serve immediately with breakfast potatoes, toast, or fruit. Optional: add salsa, hot sauce, or fresh cilantro for extra flavor.
+
     ],
   ),
   recipe(
     "treat",
-    "title",
-    is-gf: true,
+    "Chocolate Chip Cookies",
+    image-path: "imgs/Chocolate-Chip-Cookies-1-1-1024x1536-183090191.jpg",
     is-nf: true,
-    adapted-from: "May 25 p38",
+    adapted-from: "Purely Kaylee",
     (
-      ([1 lb], [tofu], [wow]),
+      ([#frac(1, 2) cup], [vegan butter], [slightly softened]),
+      ([1 cup], [light brown sugar], [packed]),
+      ([#frac(1, 4) cup], [plant-based milk]),
+      ([2 tsp], [vanilla extract]),
+      ([1 #frac(3, 4) cups], [all-purpose flour]),
+      ([1 tsp], [baking soda]),
+      ([#frac(1, 2) tsp], [salt]),
+      ([1 cup], [vegan chocolate chips]),
     ),
-    [
-      description
+    [Prepare the dough
+      In a large bowl, add vegan butter and brown sugar. Cream together until just combined, ~#u[1–2 mins].
+      Add plant-based milk and vanilla extract. Cream again to combine.
+
+      Add dry ingredients
+      Add all-purpose flour, baking soda, and salt. Fold until evenly combined, then stir in chocolate chips.
+      Cover dough and refrigerate #u[30 mins] or longer.
+
+      Bake the cookies
+      Preheat oven to #u[350°F] and line a baking sheet with parchment paper.
+      Scoop cookie dough into balls and place on prepared baking sheet.
+      Bake #u[12 mins] on the middle rack, removing while centers are still slightly underbaked.
+      Let cookies rest #u[5 mins] on baking sheet before serving.
     ],
   ),
-  recipe(
-    "treat",
-    "title",
-    is-gf: true,
-    is-nf: true,
-    adapted-from: "May 25 p38",
-    (
-      ([1 lb], [tofu], [wow]),
-    ),
-    [
-      description
-    ],
-  ),
-  recipe(
-    "treat",
-    "title",
-    is-gf: true,
-    is-nf: true,
-    adapted-from: "May 25 p38",
-    (
-      ([1 lb], [tofu], [wow]),
-    ),
-    [
-      description
-    ],
-  ),
-  recipe(
-    "treat",
-    "title",
-    is-gf: true,
-    is-nf: true,
-    adapted-from: "May 25 p38",
-    (
-      ([1 lb], [tofu], [wow]),
-    ),
-    [
-      description
-    ],
-  ),
-  recipe(
-    "treat",
-    "title",
-    is-gf: true,
-    is-nf: true,
-    adapted-from: "May 25 p38",
-    (
-      ([1 lb], [tofu], [wow]),
-    ),
-    [
-      description
-    ],
-  ),
-  recipe(
-    "treat",
-    "title",
-    is-gf: true,
-    is-nf: true,
-    adapted-from: "May 25 p38",
-    (
-      ([1 lb], [tofu], [wow]),
-    ),
-    [
-      description
-    ],
-  ),
-  recipe(
-    "treat",
-    "title",
-    is-gf: true,
-    is-nf: true,
-    adapted-from: "May 25 p38",
-    (
-      ([1 lb], [tofu], [wow]),
-    ),
-    [
-      description
-    ],
-  ),
-  recipe(
-    "treat",
-    "title",
-    is-gf: true,
-    is-nf: true,
-    adapted-from: "May 25 p38",
-    (
-      ([1 lb], [tofu], [wow]),
-    ),
-    [
-      description
-    ],
-  ),
-  recipe(
-    "treat",
-    "title",
-    is-gf: true,
-    is-nf: true,
-    adapted-from: "May 25 p38",
-    (
-      ([1 lb], [tofu], [wow]),
-    ),
-    [
-      description
-    ],
-  ),
-  recipe(
-    "treat",
-    "title",
-    is-gf: true,
-    is-nf: true,
-    adapted-from: "May 25 p38",
-    (
-      ([1 lb], [tofu], [wow]),
-    ),
-    [
-      description
-    ],
-  ),
-  recipe(
-    "treat",
-    "title",
-    is-gf: true,
-    is-nf: true,
-    adapted-from: "May 25 p38",
-    (
-      ([1 lb], [tofu], [wow]),
-    ),
-    [
-      description
-    ],
-  ),
-  recipe(
-    "treat",
-    "title",
-    is-gf: true,
-    is-nf: true,
-    adapted-from: "May 25 p38",
-    (
-      ([1 lb], [tofu], [wow]),
-    ),
-    [
-      description
-    ],
-  ),
+  //   recipe(
+  //     "treat",
+  //     "title",
+  //     is-gf: true,
+  //     is-nf: true,
+  //     adapted-from: "May 25 p38",
+  //     (
+  //       ([1 lb], [tofu], [wow]),
+  //     ),
+  //     [
+  //       description
+  //     ],
+  //   ),
+  //   recipe(
+  //     "treat",
+  //     "title",
+  //     is-gf: true,
+  //     is-nf: true,
+  //     adapted-from: "May 25 p38",
+  //     (
+  //       ([1 lb], [tofu], [wow]),
+  //     ),
+  //     [
+  //       description
+  //     ],
+  //   ),
 )
 
 #for i in recipe-types.map(recipe-type => [
@@ -985,3 +1286,6 @@
 // git status
 // git commit -asm "Add your commit"
 // git push
+// create new pdf
+// ctrl shift p
+// export open file as pdf
