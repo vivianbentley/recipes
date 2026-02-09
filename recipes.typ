@@ -113,14 +113,19 @@
 }
 
 // recipe function
-#let recipe-types = ("outline", "breakfast", "side", "main", "treat")
+#let recipe-types = ("outline", "breakfast", "side", "main", "treat", "bread")
 #let recipe-type-symbols = (
   "icons/hat.svg",
   "icons/shakers.svg",
   "icons/pin.svg",
   "icons/dish.svg",
   "icons/toaster.svg",
+  "icons/bread.svg",
 )
+
+
+
+
 #let recipe(
   recipe-type,
   title,
@@ -257,21 +262,21 @@
   //     Add #g(1) to sauce pan over #u[medium] heat until sugar dissolved. Add to cooked rice, mix until liquid is absorbed.
   //   ],
   // ),
-  // recipe(
-  //   "side",
-  //   "fried onions",
-  //   is-gf: true,
-  //   image-path: "imgs/fried-onions.jpg",
-  //   image-above: true,
-  //   (
-  //     ([3], [yellow onions], [cut into strips]),
-  //     ([2 Tbsp], [corn starch]),
-  //     ([1 cup], [frying oil]),
-  //   ),
-  //   [
-  //     Heat #i[oil]. Mix #i[onions] in #i[corn starch] until well-coated. Fry in pot until golden and crispy.
-  //   ],
-  // ),
+  recipe(
+    "side",
+    "fried onions",
+    is-gf: true,
+    image-path: "imgs/fried-onions.jpg",
+    image-above: true,
+    (
+      ([3], [yellow onions], [cut into strips]),
+      ([2 Tbsp], [corn starch]),
+      ([1 cup], [frying oil]),
+    ),
+    [
+      Heat #i[oil]. Mix #i[onions] in #i[corn starch] until well-coated. Fry in pot until golden and crispy.
+    ],
+  ),
   // recipe(
   //   "side",
   //   "boullion-baked tofu",
@@ -553,7 +558,10 @@
     "Spicy Crunchy Tofu",
     is-gf: true,
     is-nf: true,
-    adapted-from: "The Korean Vegan Cookbook",
+    image-path: "imgs/spicycrunchytofu.jpg",
+    adapted-from: link(
+      "https://thekoreanvegan.com/spicy-crunchy-garlic-tofu-kkampoong-tofu/",
+    )[The Korean Vegan Cookbook],
     (
       1,
       ([1 block], [firm tofu], [drained and cut into cubes]),
@@ -595,33 +603,375 @@
       description
     ],
   ),
-  // recipe(
-  //   "treat",
-  //   "title",
-  //     is-gf: true,
-  // is-nf: true,
-  //   adapted-from: "May 25 p38",
-  //   (
-  //     ([1 lb], [tofu], [wow]),
-  //   ),
-  //   [
-  //     description
-  //   ],
-  // ),
-  // recipe(
-  //   "treat",
-  //   "title",
-  //     is-gf: true,
-  // is-nf: true,
-  //   adapted-from: "May 25 p38",
-  //   (
-  //     ([1 lb], [tofu], [wow]),
-  //   ),
-  //   [
-  //     description
-  //   ],
-  // ),
-  //
+  recipe(
+    "main",
+    "Butter Chick'n",
+    is-gf: true,
+    is-nf: true,
+    image-path: "imgs/butterchicken.jpg",
+    adapted-from: link("https://www.noracooks.com/vegan-butter-chicken/")[Nora Cooks],
+
+    (
+      1,
+      ([2 blocks], [extra-firm tofu], [(16 oz each)]),
+      ([2 tablespoons], [olive oil]),
+      ([2 tablespoons], [potato starch]),
+      ([1/2 teaspoon], [salt]),
+      2,
+      ([2 tablespoons], [vegan butter], [or olive oil]),
+      ([1 large], [onion], [diced small]),
+      ([1 tablespoon], [fresh ginger], [grated], [or 1 teaspoon dried]),
+      ([2 cloves], [garlic], [minced]),
+      ([1 tablespoon], [garam masala]),
+      ([1 teaspoon], [curry powder]),
+      ([1 teaspoon], [ground coriander]),
+      ([#frac(1, 4) teaspoon], [cayenne pepper]),
+      ([1 teaspoon], [salt]),
+      ([3 ounces], [tomato paste]),
+      ([1 can], [full fat coconut milk]),
+      3,
+      ([4 cups], [cooked rice], [white or brown]),
+      ([to taste], [cilantro], [chopped]),
+    ),
+    [Press the tofu. We use a tofu press (one of our most used kitchen gizmos) but you can make a homemade press by placing a heavy pan on top of the tofu with something underneath to soak up the water.
+      Preheat the oven to 400 degrees F and line a baking sheet with parchment paper.
+      Slice the tofu into about 6 slices. Now, rip each slice into medium-large pieces. Ripping gives the tofu a great texture for this dish.
+      Add the tofu pieces to a large bowl along with the olive oil, potato starch and salt. Stir gently to coat. Arrange the tofu evenly on the prepared pan, and bake for 25-30 minutes, until golden and crispy.
+      While the tofu bakes, start the rice cooker.
+      Then prepare the sauce: Melt the 2 tablespoons of vegan butter in a large pan over medium-high heat. Saute the onion for 3-4 minutes in the butter, then add the ginger and garlic and cook for 1 more minute. Add the spices, salt, tomato paste and coconut milk. Stir until smooth and combined, then simmer for 5-10 minutes, stirring frequently.
+      When the tofu is done baking, add it to the sauce and stir to coat the pieces. Serve over rice. Garnish with chopped fresh cilantro. Enjoy!
+      description
+    ],
+  ),
+  recipe(
+    "main",
+    "Brocolli Cheddar Orzo",
+    is-gf: true,
+    is-nf: true,
+    image-path: "imgs/vegan-broccoli-cheddar-orzo-2.jpg",
+    adapted-from: link("https://naturallieplantbased.com/vegan-broccoli-cheddar-orzo/")[Naturallieplantbased],
+    (
+      1,
+      ([1 tablespoon], [plant-based butter]),
+      ([1 medium], [onion], [diced]),
+      ([3 cloves], [garlic], [minced]),
+      ([#frac(1, 2) cup], [carrots], [shredded]),
+      ([#frac(1, 2) teaspoon], [salt]),
+      ([#frac(1, 4) teaspoon], [black pepper], [freshly ground]),
+      ([#frac(1, 4) teaspoon], [paprika]),
+      ([1 cup], [orzo], [uncooked]),
+      ([2 cups], [vegetable broth], [low sodium]),
+      ([#frac(1, 2) teaspoon], [dijon mustard]),
+      ([#frac(1, 2) cup], [non-dairy milk], [unsweetened], [soy or almond]),
+      ([2 heaping cups], [broccoli florets], [cut into smaller pieces]),
+      ([1 cup], [cheddar], [shredded], [plant-based if vegan]),
+      ([#frac(1, 4) cup], [parmesan shreds], [plus more for topping], [plant-based if vegan]),
+    ),
+    [ In a medium or large pot, begin heating 1 tablespoon vegan butter over medium heat. Add in one diced medium onion and sauté until softened and slightly browned (5-7 minutes).
+      Add in 3 cloves minced garlic, 1/2 cup shredded carrots, and salt and spices. Cook for few minutes.
+      3 cloves minced garlic, 1/2 cup shredded carrots, 1/2 tsp salt, 1/4 tsp freshly ground black pepper, 1/4 tsp paprika
+      Pour in your orzo and vegetable broth. Add in the Dijon mustard. Bring to a boil then lower heat, cover, and simmer for 5 minutes.
+      1 cup uncooked orzo, 2 cups vegetable broth, 1/2 tsp Dijon mustard
+      Add in the 1/2 cup milk and 2 cups broccoli florets. Stir until combined. Cover for another 4-5 minutes until broccoli is cooked through.
+      Stir in the 1 cup vegan cheddar shreds and 1/4 cup parm until it is melty and creamy.
+      Enjoy right away. Feel free to sprinkle some freshly ground pepper on top and/or nutritional yeast.
+      description
+    ],
+  ),
+  recipe(
+    "main",
+    "baked sweet potato chaat",
+    adapted-from: "Nov 24 p14",
+    image-path: "imgs/sweet-potato-chaat.png",
+    is-gf: true,
+    is-nf: true,
+    (
+      ([2-3 lb], [sweet potatoes]),
+      1,
+      ([1 lb], [dry chickpeas], [soaked, cooked, and patted dry]),
+      ([1#half Tbsp], [cumin]),
+      ([1#half Tbsp], [chaat masala]),
+      ([#frac(1, 4) cup], [olive oil#mult]),
+      2,
+      ([1], [cilantro bunch]),
+      ([2], [jalapeño], [stem cut off]),
+      ([4-6], [green onions]),
+      ([#frac(1, 4) cup], [lime juice]),
+      ([#frac(1, 4) cup], [olive oil#mult]),
+      3,
+      ([1-2], [serves fried onion], [_(see pg. #context locate(label("fried onions")).page())_]),
+      ([], [plain vegan yogurt], [or vegan sour cream]),
+      ([1], [red onion], [finely chopped]),
+      ([1], [pomegranate], [for seeds]),
+    ),
+    [
+      Preheat oven to #u[450°F]. Cut #i[potatoes] in half if large. Prick all over with a fork. Run under water to dampen skin. Place on rimmed baking sheet with parchment paper. Drizzle olive oil and sprinkle salt, spread with hands to coat. Roast #u[30-35 mins].
+
+      In a bowl, mix #g(1). Add to potato sheet. Cook all for another #u[15-20 mins].
+
+      In a food processor, blend #g(2) till well mixed, but not puréed.
+
+      Serve in bowls by mixing and lightly mashing potatoes and chickpeas (or do it like the picture, I'm not your mom), then topping with blended sauce and elements of #g(3).
+    ],
+  ),
+  recipe(
+    "bread",
+    "Red Bean Bread",
+    is-nf: true,
+    adapted-from: "The Korean Vegan Cookbook",
+    image-path: "imgs/braided red bean bread1.jpg",
+    (
+      ([1 cup], [warm water], [100–110°F]),
+      ([1#half cup], [plant milk], [warmed, 100–110°F]),
+      ([2 Tbsp], [plant milk]),
+      ([1 Tbsp], [sugar]),
+      ([4 tsp], [active dry yeast]),
+      ([4 cups], [bread flour]),
+      ([#half Tbsp], [salt]),
+      ([#frac(1, 3) cup], [extra-virgin olive oil]),
+      ([3 cups], [paht], [sweet red bean paste]),
+      ([1 Tbsp], [maple syrup]),
+      ([], [coarse sea salt], [for sprinkling]),
+      ([1 Tbsp], [toasted sesame seeds]),
+    ),
+    [In a small bowl, mix #u[1 cup] warm water, #u[#half cup] warmed plant milk, #u[2 Tbsp] sugar, and #u[2 tsp] active dry yeast. Set aside #u[10 mins], until foamy.
+
+      In a large bowl, combine #u[4 cups] flour, #u[1 tsp] salt, and #u[2 Tbsp] olive oil. Add yeast mixture and stir with a wooden spoon until a dough forms.
+
+      Turn dough onto a floured surface and knead #u[5 mins] until smooth. Shape into a ball, place in a bowl, cover, and let rise in a warm place #u[1 hour], until doubled in size.
+
+      Preheat oven to #u[400°F]. Line a large baking sheet with parchment paper.
+
+      Punch down dough, knead #u[2 mins], and divide in half. Return one half to the bowl and cover.
+
+      Divide remaining dough into #u[3] equal pieces. Roll each into a #u[10×7-inch] rectangle. Spread #u[#half cup] red bean paste over dough, leaving a #u[#half - inch] border. Roll into a log and pinch edges to seal. Repeat to make three stuffed ropes.
+
+      Place ropes side by side on baking sheet. Pinch tops together, then braid by crossing left over middle, right over middle, repeating to the end. Pinch ends to seal.
+
+      Repeat shaping and braiding with remaining dough to form second loaf.
+
+      In a small bowl, mix #u[2 Tbsp] plant milk with #u[1 Tbsp] maple syrup. Brush over loaves. Sprinkle with sea salt and sesame seeds.
+
+      Bake #u[50 mins], until golden brown. Cool completely before slicing.
+
+      description
+    ],
+  ),
+  recipe(
+    "bread",
+    "Focacia",
+    is-nf: true,
+    image-path: "imgs/focaccia.jpg",
+    adapted-from: "Bon Appetit",
+    (
+      ([1 envelope], [active dry yeast], [¼ oz., about 2¼ tsp]),
+      ([2 tsp], [maple syrup]),
+      ([5 cups], [all-purpose flour], [625 g]),
+      ([5 tsp], [Diamond Crystal kosher salt]),
+      ([1 Tbsp], [Morton kosher salt]),
+      ([6 Tbsp], [extra-virgin olive oil], [divided, plus more for hands]),
+      ([4 Tbsp], [unsalted butter], [plus more for pan]),
+      ([], [flaky sea salt], [for finishing]),
+      ([2–4 cloves], [garlic]),
+    ),
+    [In a small bowl, mix #u[1 cup] warm water, #u[#half cup] warmed plant milk, #u[2 Tbsp] sugar, and #u[2 tsp] active dry yeast. Set aside #u[10 mins], until foamy.
+
+      In a large bowl, combine #u[4 cups] flour, #u[1 tsp] salt, and #u[2 Tbsp] olive oil. Add yeast mixture and stir with a wooden spoon until a dough forms.
+
+      Turn dough onto a floured surface and knead #u[5 mins] until smooth. Shape into a ball, place in a bowl, cover, and let rise in a warm place #u[1 hour], until doubled in size.
+
+      Preheat oven to #u[400°F]. Line a large baking sheet with parchment paper.
+
+      Punch down dough, knead #u[2 mins], and divide in half. Return one half to the bowl and cover.
+
+      Divide remaining dough into #u[3] equal pieces. Roll each into a #u[10×7-inch] rectangle. Spread #u[#half cup] red bean paste over dough, leaving a #u[#half - inch] border. Roll into a log and pinch edges to seal. Repeat to make three stuffed ropes.
+
+      Place ropes side by side on baking sheet. Pinch tops together, then braid by crossing left over middle, right over middle, repeating to the end. Pinch ends to seal.
+
+      Repeat shaping and braiding with remaining dough to form second loaf.
+
+      In a small bowl, mix #u[2 Tbsp] plant milk with #u[1 Tbsp] maple syrup. Brush over loaves. Sprinkle with sea salt and sesame seeds.
+
+      Bake #u[50 mins], until golden brown. Cool completely before slicing.
+
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "Peanut Butter Bars",
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [Line a standard loaf pan with parchment paper or muffin liners.
+
+      In a medium bowl, mix melted butter, graham crumbs, powdered sugar, and peanut butter until well blended. Press evenly into prepared pan.
+
+      Place chocolate chips and peanut butter in a microwave-safe bowl. Microwave on high, stirring every #u[15 secs], until smooth. Spread evenly over crust.
+
+      Refrigerate #u[1 hour], then cut into #u[8] squares.
+
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
+  recipe(
+    "treat",
+    "title",
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "May 25 p38",
+    (
+      ([1 lb], [tofu], [wow]),
+    ),
+    [
+      description
+    ],
+  ),
 )
 
 #for i in recipe-types.map(recipe-type => [
@@ -633,4 +983,5 @@
 
 
 // git status
-//
+// git commit -asm "Add your commit"
+// git push
