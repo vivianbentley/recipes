@@ -7,7 +7,7 @@
 // add Ella's manapua recipe
 // add ella's cookie gun recipe
 
-
+#import "@preview/in-dexter:0.7.2": *
 
 
 // general set rules
@@ -415,13 +415,13 @@
     image-above: true,
     adapted-from: "PlantYou",
     (
-      ([½ cup], [], [fruit of choice (mango for yellow, raspberries for pink, blueberries for purple)]),
-      ([¾ cup], [], [unsweetened plant-based milk (soy, almond, cashew, or oat)]),
-      ([¼ cup], [], [coconut milk]),
-      ([1 teaspoon], [], [pure maple syrup]),
-      ([1 teaspoon], [], [vanilla extract]),
-      ([3 tablespoons], [], [chia seeds]),
-      ([1 cup], [], [unsweetened Vegan Yogurt]),
+      ([½ cup], [fruit of choice (mango for yellow, raspberries for pink, blueberries for purple)]),
+      ([¾ cup], [unsweetened plant-based milk (soy, almond, cashew, or oat)]),
+      ([¼ cup], [coconut milk]),
+      ([1 teaspoon], [pure maple syrup]),
+      ([1 teaspoon], [vanilla extract]),
+      ([3 tablespoons], [chia seeds]),
+      ([1 cup], [unsweetened Vegan Yogurt]),
     ),
     [
       In a blender, combine the fruit, plant-based milk, coconut milk, maple syrup, and vanilla. Transfer the mixture to a sealable container and stir in the chia seeds until evenly dispersed.
@@ -1180,11 +1180,11 @@
     adapted-from: "Minimalist Baker",
     (
       1,
-      ([8 oz], [extra-firm tofu]),
+      ([8 oz], index[extra-firm tofu]),
       ([1–2 Tbsp], [olive oil]),
       ([#frac(1, 4)], [medium red onion], [thinly sliced]),
-      ([#frac(1, 2)], [medium red bell pepper], [thinly sliced]),
-      ([2 cups], [kale], [loosely chopped]),
+      ([#frac(1, 2)], index[medium red bell pepper], [thinly sliced]),
+      ([2 cups], index[kale], [loosely chopped]),
       2,
       ([#frac(1, 2) tsp], [sea salt], [reduce amount for less salty sauce]),
       ([#frac(1, 2) tsp], [garlic powder]),
@@ -1275,12 +1275,25 @@
   //   ),
 )
 
+// Trying to figure out an index
+// #index [apple]
+
+// = Recipe Index
+// #columns (2)[
+// #make-index (title : [Ingredients Index], outlined : true, use-page-counter : true)
+// ]
+
+
+
+
 #for i in recipe-types.map(recipe-type => [
   = #recipe-type;s
   #for j in all-recipes.filter(recipe => recipe.recipe-type == recipe-type) { j.content }
 ]) { i }
 
 #box()<end>
+
+#make-index(title: [Index], outlined: true, use-page-counter: true)
 
 
 // git status
