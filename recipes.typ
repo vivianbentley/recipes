@@ -1,11 +1,12 @@
 // To Do:
 // How to optimize so a recipe stays on the same page (images don't get orphaned)
-// Add intro page
 // How to group salads and soups together (or alphabetical sort?)
 // Add index by ingredients?
 // Add cook time / serving size
-// add Ella's manapua recipe
 // add ella's cookie gun recipe
+// Ask miles about how to set ingredients to accept 4 ingredients in a row instead of only 3 for indexing.
+// how to add a intro page
+// how to have a 'mobile version'
 
 #import "@preview/in-dexter:0.7.2": *
 
@@ -122,6 +123,7 @@
 #let colors = (
   "#D88C9A",
   "#8FDFFA",
+  // "#116e11",
   "#F2D0A9",
   "#F1E3D3",
   "#99C1B9",
@@ -129,7 +131,8 @@
 )
 // recipe function
 #let recipe-types = (
-  "outline",
+  "table of content",
+  // "introduction",
   "bread",
   "breakfast",
   "side",
@@ -138,6 +141,7 @@
 )
 #let recipe-type-symbols = (
   "icons/hat.svg",
+  // "icons/bread2.svg",
   "icons/bread2.svg",
   "icons/shakers.svg",
   "icons/pin.svg",
@@ -567,9 +571,14 @@
       ([to taste], [freshly ground black pepper]),
       ([4 tablespoons], [pomegranate seeds], [to garnish]),
     ),
-    [Divide the cauliflower head into florets or roughly chop it.
-      Sauté 2 cloves minced garlic in 1 tablespoon olive oil in a large skillet until fragrant, for about 2 minutes. Add 1 1/2 cups vegetable stock, 2 thyme sprigs and cauliflower florets. Bring to a boil, cover, reduce the heat and cook for 15-20 minutes, until the cauliflower is nice and soft.
+    [
+      Divide the cauliflower head into florets or roughly chop it.
+      Sauté 2 cloves minced garlic in 1 tablespoon olive oil in a large skillet until fragrant, for about #u[2 minutes]. Add 1 1/2 cups vegetable stock, 2 thyme sprigs and cauliflower florets.
+
+      Bring to a boil, cover, reduce the heat and cook for #u[15-20 minutes], until the cauliflower is nice and soft.
       Discard the thyme and blend until smooth, using a blender.
+
+
       Add 1/2 cup light coconut milk and season with salt and freshly ground black pepper to taste. Garnish with 4 tablespoons pomegranate seeds and 2 sprigs fresh thyme.
     ],
   ),
@@ -785,9 +794,9 @@
     image-below: true,
     adapted-from: "Bon Appetit",
     (
-      ([1 envelope], [active dry yeast], [¼ oz., about 2¼ tsp]),
+      ([1 envelope], [active dry yeast], [2¼ tsp]),
       ([2 tsp], [maple syrup]),
-      ([5 cups], [all-purpose flour], [625 g]),
+      ([5 cups], [all-purpose flour]),
       ([5 tsp], [Diamond Crystal kosher salt]),
       ([1 Tbsp], [Morton kosher salt]),
       ([6 Tbsp], [extra-virgin olive oil], [divided, plus more for hands]),
@@ -795,12 +804,15 @@
       ([], [flaky sea salt], [for finishing]),
       ([2–4 cloves], [garlic]),
     ),
-    [Whisk one ¼-oz. envelope active dry yeast (about 2¼ tsp.), 2 tsp. honey, and 2½ cups lukewarm water in a medium bowl and let sit 5 minutes or until foamy.
-      Add 5 cups (625 g) all-purpose flour and 5 tsp. Diamond Crystal or 1 Tbsp. Morton kosher salt and mix with a rubber spatula until a dough forms.
-      Pour 4 Tbsp. extra-virgin olive oil into a big bowl. Cover with a silicone lid and let it rise at room temperature until doubled in size, 3–4 hours.
-      Generously butter a 13x9" baking pan. Pour 1 Tbsp. extra-virgin olive oil into center of pan. Keeping the dough in the bowl and using a fork in each hand, gather up edges of dough farthest from you and lift up and over into center of bowl. Give the bowl a quarter turn and repeat process. Do this 2 more times; you want to deflate dough while you form it into a rough ball. Transfer dough to prepared pan. Pour any oil left in bowl over and turn dough to coat it in oil. Let rise, uncovered, in a dry, warm spot until doubled in size, at least 1½ hours and up to 4 hours.
-      Place a rack in middle of oven; preheat to 450°. To see if the dough is ready, poke it with your finger. It should spring back slowly, leaving a small visible indentation. Lightly oil your hands. If using a rimmed baking sheet, gently stretch out dough to fill. Dimple focaccia all over with your fingers, like you’re aggressively playing the piano, creating very deep depressions in the dough (reach your fingers all the way to the bottom of the pan). Drizzle with remaining 1 Tbsp. extra-virgin olive oil and sprinkle with flaky sea salt. Bake focaccia until puffed and golden brown all over, 20–30 minutes.
-      Hold off on this last step until you're ready to serve the focaccia: Melt 4 Tbsp. unsalted butter in a small saucepan over medium heat. Remove from heat. Peel and grate in 2–4 garlic cloves with a Microplane (use 2 cloves if you’re garlic-shy or up to 4 if you love it). Return to medium heat and cook, stirring often, until garlic is just lightly toasted, 30–45 seconds.
+    [Whisk one ¼-oz. envelope active dry yeast (about 2¼ tsp.), 2 tsp. honey, and 2½ cups lukewarm water in a medium bowl and let sit #u[5 minutes] or until foamy.
+      Add 5 cups all-purpose flour and 5 tsp. Diamond Crystal or 1 Tbsp. Morton kosher salt and mix with a rubber spatula until a dough forms.
+      Pour 4 Tbsp. extra-virgin olive oil into a big bowl. Cover with a silicone lid and let it rise at room temperature until doubled in size, #u[3–4 hours].
+
+      Generously butter a 13x9" baking pan. Pour 1 Tbsp. extra-virgin olive oil into center of pan. Keeping the dough in the bowl and using a fork in each hand, gather up edges of dough farthest from you and lift up and over into center of bowl. Give the bowl a quarter turn and repeat process.
+
+      Do this 2 more times; you want to deflate dough while you form it into a rough ball. Transfer dough to prepared pan. Pour any oil left in bowl over and turn dough to coat it in oil. Let rise, uncovered, in a dry, warm spot until doubled in size, at least #u[1½ hours] and up to #u[4 hours].
+      Place a rack in middle of oven; preheat to 450°. To see if the dough is ready, poke it with your finger. It should spring back slowly, leaving a small visible indentation. Lightly oil your hands. If using a rimmed baking sheet, gently stretch out dough to fill. Dimple focaccia all over with your fingers, like you’re aggressively playing the piano, creating very deep depressions in the dough (reach your fingers all the way to the bottom of the pan). Drizzle with remaining 1 Tbsp. extra-virgin olive oil and sprinkle with flaky sea salt. Bake focaccia until puffed and golden brown all over, #u[20–30 minutes].
+      Hold off on this last step until you're ready to serve the focaccia: Melt 4 Tbsp. unsalted butter in a small saucepan over medium heat. Remove from heat. Peel and grate in 2–4 garlic cloves with a Microplane (use 2 cloves if you’re garlic-shy or up to 4 if you love it). Return to medium heat and cook, stirring often, until garlic is just lightly toasted, #u[30–45 seconds].
       Brush garlic-butter all over focaccia and slice into squares or rectangles.
     ],
   ),
@@ -1027,14 +1039,13 @@
     adapted-from: "America's Test Kitchen",
     image-path: "imgs/couscous.jpg",
     (
-      ([], [Couscous & chickpeas]),
       ([1], [carrot], [peeled and chopped]),
       ([5 tsp], [extra-virgin olive oil], [divided]),
       ([#frac(1, 8) tsp], [table salt]),
       ([#frac(2, 3) cup], [vegetable broth]),
       ([#frac(1, 2) tsp], [smoked paprika]),
       ([#frac(1, 4) tsp], [ground cumin]),
-      ([1 can], [chickpeas], [15 oz], [rinsed]),
+      ([1 15 oz can], [chickpeas], [rinsed]),
       ([#frac(1, 4) cup], [raisins]),
       ([#frac(1, 4) cup], [chopped fresh parsley or cilantro]),
       ([2 tsp], [lemon juice], [plus lemon wedges for serving]),
@@ -1180,11 +1191,11 @@
     adapted-from: "Minimalist Baker",
     (
       1,
-      ([8 oz], index[extra-firm tofu]),
+      ([8 oz], [extra-firm tofu], [extra-firm tofu]),
       ([1–2 Tbsp], [olive oil]),
       ([#frac(1, 4)], [medium red onion], [thinly sliced]),
-      ([#frac(1, 2)], index[medium red bell pepper], [thinly sliced]),
-      ([2 cups], index[kale], [loosely chopped]),
+      ([#frac(1, 2)], [medium red bell pepper], [thinly sliced]),
+      ([2 cups], [kale], [loosely chopped]),
       2,
       ([#frac(1, 2) tsp], [sea salt], [reduce amount for less salty sauce]),
       ([#frac(1, 2) tsp], [garlic powder]),
@@ -1247,19 +1258,199 @@
       Let cookies rest #u[5 mins] on baking sheet before serving.
     ],
   ),
-  //   recipe(
-  //     "treat",
-  //     "title",
-  //     is-gf: true,
-  //     is-nf: true,
-  //     adapted-from: "May 25 p38",
-  //     (
-  //       ([1 lb], [tofu], [wow]),
-  //     ),
-  //     [
-  //       description
-  //     ],
-  //   ),
+  recipe(
+    "treat",
+    "PB Chocolate Nobake Cookies",
+    is-gf: true,
+    image-path: "imgs/nobakecookies.jpg",
+    adapted-from: link("https://www.karissasvegankitchen.com/vegan-no-bake-cookies/#recipe")[karissasvegankitchen],
+    (
+      ([#frac(1, 2) cup], [vegan butter]),
+      ([1#frac(3, 4) cup], [granulated sugar]),
+      ([#frac(1, 2) cup], [non-dairy milk]),
+      ([#frac(1, 4) cup], [cocoa powder]),
+      ([3 cup], [quick oats]),
+      ([#frac(3, 4) cup], [creamy peanut butter]),
+      ([1 tbsp], [vanilla extract]),
+      ([#frac(1, 4) tsp], [salt]),
+    ),
+    [
+      Make the chocolate mixture
+      In a large saucepan, combine the butter, sugar, non-dairy milk, and cocoa powder. Bring to a boil over medium heat, whisking frequently. Let boil for #u[1 min].
+
+      Remove from heat. Immediately stir in the oats, peanut butter, vanilla, and salt until fully combined.
+
+      Prep & scoop
+      Line #u[2 baking sheets] with parchment paper. Drop spoonfuls of the warm cookie mixture onto the baking sheets.
+
+      Cool & set
+      Let cool in fridge until set, about #u[30 mins].
+    ],
+  ),
+  recipe(
+    "main",
+    "Tortilla Soup",
+    image-path: "imgs/tortillasoup.jpg",
+    image-below: true,
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "Megan's Recipe",
+    (
+      1,
+      ([1], [jalapeño], [diced, seeds removed]),
+      ([1], [poblano pepper], [diced, seeds removed]),
+      ([1], [red onion], [diced, divided]),
+      ([5 cloves], [garlic], [minced]),
+      ([2 tbsp], [tomato paste]),
+      ([2], [chipotle peppers in adobo], [diced]),
+      ([1 can], [hominy], [drained and rinsed]),
+      ([1 can], [corn], [drained]),
+      ([1 can], [black beans], [drained and rinsed]),
+      ([1 can], [fire-roasted diced tomatoes]),
+      ([1 can], [crushed tomatoes]),
+      ([1 tsp], [ground coriander]),
+      ([1 tsp], [smoked paprika]),
+      ([#frac(1, 2) tsp], [ground cumin]),
+      ([1 tsp], [salt]),
+      ([#frac(1, 2) tsp], [black pepper]),
+      ([2 cup], [vegetable broth]),
+      2,
+      ([1], [avocado], [sliced or diced]),
+      ([#frac(1, 4) cup], [fresh cilantro], [chopped]),
+      ([1], [lime], [cut into wedges]),
+    ),
+    [
+      Heat oil in a pot over medium-high heat. Add jalapeño and poblano and sauté until lightly charred, about #u[8 mins].
+
+      Add cumin, coriander, smoked paprika, pepper, and salt. Stir and cook for #u[1 min] until fragrant.
+
+      Reserve #u[#frac(1, 4)] of the diced red onion for topping. Add remaining onion and garlic to the pot and cook until onions are browned.
+
+      Stir in tomato paste and cook briefly. Add diced chipotle peppers in adobo and cook for about #u[1 min].
+
+      Add hominy, corn, black beans, fire-roasted diced tomatoes, crushed tomatoes, and vegetable broth. Bring to a simmer and cook for #u[20 mins].
+
+      Ladle into bowls and top with avocado, cilantro,and lime wedges. Serve hot.
+    ],
+  ),
+  recipe(
+    "main",
+    "Crispy Tofu Tacos",
+    image-path: "imgs/crispytofutaco.jpg",
+    image-above: true,
+    is-gf: true,
+    is-nf: true,
+    adapted-from: "New York Times",
+    (
+      1,
+      ([2 blocks], [firm tofu]),
+      ([#frac(1, 4) cup plus 3 tbsp], [olive oil], [divided]),
+      ([2 tbsp], [soy sauce]),
+      ([2 tsp], [ground cumin]),
+      ([1 tsp], [smoked paprika]),
+      ([#frac(1, 2) tsp], [garlic powder]),
+      ([#frac(1, 2) tsp], [onion powder]),
+      ([#frac(1, 4) to #frac(1, 2) tsp], [ground cayenne]),
+      ([to taste], [salt]),
+      ([to taste], [black pepper]),
+      ([#frac(1, 4) cup], [tomato paste]),
+      2,
+      ([2], [ripe avocados]),
+      ([2 tbsp], [mayonnaise], [vegan, if desired]),
+      ([#frac(1, 2) tsp], [lime zest], [finely grated]),
+      ([3 tbsp], [lime juice]),
+      ([8], [flour/corn tortillas], [warmed]),
+      3,
+      ([for serving], [red onion], [minced]),
+      ([for serving], [radishes], [thinly sliced]),
+      ([for serving], [cilantro], [chopped]),
+    ),
+    [
+      Preheat the oven
+      Heat oven to #u[400°F].
+
+      Prepare the tofu
+      Drain tofu, squeezing out excess moisture (it may break into chunks).
+      Coarsely grate tofu onto two #u[11-by-17-inch] foil-lined sheet pans.
+      Drizzle each pan with #u[2 tbsp olive oil] and #u[1 tbsp soy sauce].
+      In a small bowl, mix cumin, paprika, garlic powder, onion powder, cayenne, #u[1 tsp salt], and #u[1 tsp pepper].
+      Sprinkle half the seasoning over each pan and toss to coat.
+      Spread into an even layer.
+
+      Roast the tofu
+      Roast #u[30–35 mins], stirring halfway through and rotating pans,
+      until tofu sizzles, darkens, and crisps.
+
+      Add tomato paste mixture
+      Mix tomato paste with remaining #u[3 tbsp olive oil].
+      Drizzle half over each pan of tofu and toss to combine.
+      Spread evenly and roast again #u[10–15 mins]
+      until tofu audibly crackles and develops a slight crunch.
+
+      Make the avocado cream
+      In a small food processor or blender, blend avocados, mayonnaise,
+      lime zest, and lime juice until creamy.
+      Season generously with salt.
+
+      Assemble the tacos
+      Swipe warmed tortillas with avocado cream.
+      Top with crispy tofu, red onion, radishes, and cilantro.
+      Serve immediately.
+
+    ],
+  ),
+  //
+  recipe(
+    "bread",
+    "Manapua Dough",
+    is-nf: true,
+    image-path: "imgs/manapua.jpg",
+    adapted-from: "Ella's Recipe",
+    (
+      ([3 cups], [all-purpose flour], [plus extra for rolling]),
+      ([1 packet], [active dry yeast]),
+      ([2 tsp], [sugar], [for activating yeast]),
+      ([1 tbsp], [sugar]),
+      ([2 tsp], [baking powder]),
+      ([1 tbsp], [oil], [neutral oil of choice]),
+      ([1 cup], [water]),
+      ([#frac(1, 4) cup], [water], [for activating yeast]),
+      ([1 mug], [water], [for steaming to activate yeast]),
+      ([about 2 tbsp per bun], [filling], [of choice]),
+    ),
+    [
+      Activate the yeast
+      Heat #u[1 mug water] until steaming.
+      In a small bowl, combine #u[1 packet yeast], #u[2 tsp sugar], and #u[1/4 cup water].
+      Set bowl over the mug so steam gently warms the mixture.
+      Let sit until yeast foams and doubles in size.
+
+      Mix the dry ingredients
+      In a separate bowl, combine #u[3 cups flour] (reserve extra for rolling),
+      #u[1 tbsp sugar], and #u[2 tsp baking powder].
+      Mix until well combined.
+
+      Make the dough
+      Once yeast is active, add yeast mixture, #u[1 tbsp oil], and #u[1 cup water]
+      to the flour mixture.
+      Mix and knead until combined and smooth.
+      Dough should be soft but not very sticky (add flour as needed).
+
+      Let the dough rise
+      Cover and let rise in a warm place
+      until doubled in size.
+
+      Divide the dough
+      Punch down dough and divide into #u[12–18 pieces].
+
+      Fill and steam
+      Roll each piece flat.
+      Fill with about #u[2 tbsp filling] of choice.
+      Pinch closed to seal.
+      Steam on parchment for #u[15 mins].
+
+    ],
+  ),
   //   recipe(
   //     "treat",
   //     "title",
