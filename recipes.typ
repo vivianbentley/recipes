@@ -1488,8 +1488,9 @@
 
 
 // git status
-// git commit -asm "Add your commit"
-// git push
-// create new pdf
 // ctrl shift p
 // export open file as pdf
+// git commit -asm "Add your commit"
+// git push
+
+
