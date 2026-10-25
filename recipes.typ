@@ -484,7 +484,7 @@
     "Cauliflower Soup",
     is-gf: true,
     is-nf: true,
-    image-above: true,
+    // image-above: true,
     image-path: "imgs/Vegan-Cauliflower-Soup-7.jpg",
     adapted-from: link("https://happykitchen.rocks/silky-vegan-cauliflower-soup/")[Happy Kitchen],
     (
@@ -573,7 +573,8 @@
     "Kimchi Jjigae",
     is-gf: true,
     is-nf: true,
-    image-path: "imgs/spicycrunchytofu.jpg",
+    image-below: true,
+    image-path: "imgs/kimchi.jpg",
     adapted-from: link(
       "https://thekoreanvegan.com/vegan-kimchi-jjigae-reigns-supreme/",
     )[The Korean Vegan Cookbook],
