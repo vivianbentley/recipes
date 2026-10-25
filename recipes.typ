@@ -291,21 +291,6 @@
   //   ],
   // ),
   recipe(
-    "side",
-    "Fried Onions",
-    is-gf: true,
-    image-path: "imgs/fried-onions.jpg",
-    image-above: true,
-    (
-      ([3], [yellow onions], [cut into strips]),
-      ([2 Tbsp], [corn starch]),
-      ([1 cup], [frying oil]),
-    ),
-    [
-      Heat #i[oil]. Mix #i[onions] in #i[corn starch] until well-coated. Fry in pot until golden and crispy.
-    ],
-  ),
-  recipe(
     "main",
     "Gado Gado",
     image-above: true,
@@ -713,7 +698,7 @@
       ([#frac(1, 4) cup], [lime juice]),
       ([#frac(1, 4) cup], [olive oil#mult]),
       3,
-      ([1-2], [serves fried onion], [_(see pg. #context locate(label("Fried Onions")).page())_]),
+      ([1-2], [serves fried onion]),
       ([], [plain vegan yogurt], [or vegan sour cream]),
       ([1], [red onion], [finely chopped]),
       ([1], [pomegranate], [for seeds]),
