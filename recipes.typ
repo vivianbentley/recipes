@@ -4,7 +4,6 @@
 // Add index by ingredients?
 // Add cook time / serving size
 // add ella's cookie gun recipe
-// Ask miles about how to set ingredients to accept 4 ingredients in a row instead of only 3 for indexing.
 // how to add a intro page
 // how to have a 'mobile version'
 
@@ -36,7 +35,7 @@
 #let gg(num, p: true) = [#if p [(];group *#text(group-divide-color, numbering(group-num, num))*#if p [)]]
 #let g(num) = gg(num, p: false)
 #let status(txt, supp: "") = text(luma(70%))[#v(0cm) #align(right)[_#supp #txt;_]]
-
+#let ingredient(it) = [#it#index(it)]
 
 #let frac(num1, num2, inch: false) = [#h(0.15cm)#box[
     #place(
@@ -121,13 +120,20 @@
 }
 // add colors here if you need more sections
 #let colors = (
-  "#D88C9A",
-  "#8FDFFA",
+  "#FFFFFF",
   // "#116e11",
-  "#F2D0A9",
-  "#F1E3D3",
-  "#99C1B9",
-  "#8E7DBE",
+  "#FFFFFF",
+  "#FFFFFF",
+  "#FFFFFF",
+  "#FFFFFF",
+  "#FFFFFF",
+  // "#D88C9A",
+  // "#116e11",
+  // "#8FDFFA",
+  // "#F2D0A9",
+  // "#F1E3D3",
+  // "#99C1B9",
+  // "#8E7DBE",
 )
 // recipe function
 #let recipe-types = (
@@ -141,12 +147,12 @@
 )
 #let recipe-type-symbols = (
   "icons/hat.svg",
-  // "icons/bread2.svg",
-  "icons/bread2.svg",
-  "icons/shakers.svg",
+  // "icons/pin.svg",
   "icons/pin.svg",
+  "icons/toaster.svg",
+  "icons/pot.svg",
   "icons/dish.svg",
-  "icons/cupcake2.svg",
+  "icons/ware.svg",
 )
 
 
@@ -161,7 +167,6 @@
   is-gf: false,
   is-colbreak: true,
   adapted-from: none,
-  bon-appetit: false,
   image-path: none,
   image-above: false,
   image-below: false,
@@ -197,7 +202,7 @@
         }
       ] #label(title)
       #v(0.2cm)
-      #if adapted-from != none { status(adapted-from, supp: "adapted from" + if bon-appetit { " Bon Appétit" }) }
+      #if adapted-from != none { status(adapted-from, supp: "adapted from") }
       #v(0.2cm)
       #align(center, ingredient-table(ingredients))
       #v(0.3cm)
@@ -247,7 +252,7 @@
       radius: 40pt,
       inset: 20pt,
     )[
-      #text(heading-color, 50pt)[Favorite \ Recipes]
+      #text(heading-color, 40pt)[Favorite \ Recipes]
       #line(stroke: heading-color, length: 30%)
       #v(0.3cm)
       #text(heading-color)[_compiled by Vivian and her lover_]
@@ -266,26 +271,23 @@
     indent: 0pt,
   )
 }
-
 // all recipes
 #let all-recipes = (
   // recipe(
-  //   "side",
-  //   "sushi rice",
-  //   is-gf: true,
-  //   is-colbreak: false,
+  //   "introduction",
+  //   "Cookbook Intro",
+  //   image-path: "imgs/intro",
   //   (
-  //     ([2 cup], [dry white rice]),
-  //     ([3 cup], [water]),
-  //     2,
-  //     ([#half cup], [rice vinegar]),
-  //     ([1 Tbsp], [cooking oil]),
-  //     ([#frac(1, 4) cup], [white sugar]),
-  //     ([1 tsp], [salt]),
+  //     ([], [], []),
   //   ),
   //   [
-  //     Rinse #i[rice] under cold water in colander until it runs clear. Add to pan with #i[water], set to #u[medium-high]. Bring to boil, then reduce heat to #u[low]. Cover until water is absorbed, #u[\~20 mins].
-  //     Add #g(1) to sauce pan over #u[medium] heat until sugar dissolved. Add to cooked rice, mix until liquid is absorbed.
+  //     These are a selection of some of our go to recipes
+  //     over the past few years. We've got a huge cookbook collection
+  //     and have been slowly working through them and honing
+  //     our favorites.
+  //     We hope you can find something in here that
+  //     you love! We've included gluten free and nut free tags to help
+  //     those with dietary restrictions.
   //   ],
   // ),
   recipe(
@@ -303,73 +305,14 @@
       Heat #i[oil]. Mix #i[onions] in #i[corn starch] until well-coated. Fry in pot until golden and crispy.
     ],
   ),
-  // recipe(
-  //   "side",
-  //   "boullion-baked tofu",
-  //   is-nf: true,
-  //   is-gf: true,
-  //   image-path: "imgs/bouillon-baked-tofu.png",
-  //   image-above: true,
-  //   adapted-from: "Nov 24 p32",
-  //   (
-  //     ([1], [firm tofu package], [(\~14oz) pressed, cubed, patted dry]),
-  //     1,
-  //     ([2 tsp], [vegetable boullion paste]),
-  //     ([#half tsp], [pepper]),
-  //     ([#half tsp], [garlic powder]),
-  //     ([#half tsp], [sugar]),
-  //     ([2 Tbsp], [olive oil]),
-  //     none,
-  //     ([1 Tbsp], [corn starch]),
-  //   ),
-  //   [
-  //     Mix #g(1) and toss with #i[tofu]. Cover and let sit at least #u[15 mins]. Prepare oven (middle rack, #u[400°F]). Lightly oil parchment paper on rimmed baking sheet.
-  //     Uncover #i[tofu] and sprinkle on #i[corn starch]. Toss to coat. Arrange tofu on prepared sheet, not touching each other. Bake until golden brown and crispy, #u[30-35 mins].
-  //   ],
-  // ),
-  // recipe(
-  //   "main",
-  //   "miso-tahini & tofu grain bowls",
-  //   adapted-from: "Apr 25 p20",
-  //   image-path: "imgs/tofu-grain-bowl.png",
-  //   (
-  //     ([1], [firm tofu package], [(\~14oz) pressed, cubed, patted dry]),
-  //     1,
-  //     ([1#half cup], [dry brown rice], [rinsed until water runs clear]),
-  //     ([#half cup], [dry quinoa]),
-  //     2,
-  //     ([8 oz], [red cabbage], [thinly sliced]),
-  //     ([3 Tbsp], [rice vinegar#mult]),
-  //     ([2 tsp], [honey#mult]),
-  //     ([#half tsp], [salt]),
-  //     none,
-  //     ([1 Tbsp], [soy sauce]),
-  //     3,
-  //     ([2], [broccoli bunches], [cut into florets with long stems]),
-  //     ([1 tsp], [red pepper flakes]),
-  //     4,
-  //     ([3 cup], [miso]),
-  //     ([2 Tbsp], [tahini]),
-  //     ([#frac(3, 4) tsp], [turmeric]),
-  //     ([2 tsp], [honey#mult]),
-  //     ([2 Tbsp], [rice vinegar#mult]),
-  //     none,
-  //     ([1], [avocado], [thinly sliced]),
-  //   ),
-  //   [
-  //     Preheat oven to #u[450°F]. Bring grains #gg(1) and #u[2#half cup] #i[water] to a boil in medium saucepan. Cover tightly with lid, reduce heat to #u[low]. Cook until grains are tender and liquid is absorbed, #u[40 mins]. Meanwhile, combine #g(2) in large bowl and vigorously massage with hands. Set aside for serving.
-  //     Arrange #i[tofu] on rimmed baking sheet, drizzle with #i[soy sauce] and #u[3 Tbsp] #i[olive oil]. Roast until lightly browned, #u[9-11 mins]. Combine #g(3) and roast alongside tofu until starting to char, #u[15-20 mins].
-  //     Whisk #g(4) to make sauce for serving.
-  //     Assemble bowls with components and serve.
-  //   ],
-  // ),
   recipe(
     "main",
     "Gado Gado",
+    image-above: true,
     image-path: "imgs/gado-gado.jpg",
     adapted-from: "Apr 24",
     (
-      ([14 oz], [extra-firm tofu], [pressed, cut into #half-in cubes, patted dry]),
+      ([14 oz], ingredient[extra-firm tofu], [pressed, cut into #half-in cubes]),
       ([16 oz], [white rice noodles], [wide like linguine]),
       1,
       ([#frac(3, 4) cup], [creamy peanut butter]),
@@ -381,11 +324,11 @@
       ([#frac(3, 4) cup], [brown sugar]),
       ([#half cup], [soy sauce]),
       3,
-      ([1], [red onion], [finely chopped]),
-      ([3], [carrots], [cut into matchsticks]),
-      ([1], [bundle cilantro], [tough stems removed]),
-      ([1], [cucumber], [thinly sliced]),
-      ([1 cup], [peanuts], [halves or chopped]),
+      ([1], ingredient[red onion], [finely chopped]),
+      ([3], ingredient[carrots], [cut into matchsticks]),
+      ([1], ingredient[bundle cilantro], [tough stems removed]),
+      ([1], ingredient[cucumber], [thinly sliced]),
+      ([1 cup], ingredient[peanuts], [chopped]),
     ),
     [
       Combine #g(1) in a bowl to make sauce. Mix until mostly homogeneous. Set aside.
@@ -397,38 +340,27 @@
       Serve noodles with cooked tofu and #g(3).
     ],
   ),
-  // recipe(
-  //   "treat",
-  //   "title",
-  //     is-gf: true,
-  // is-nf: true,
-  //   adapted-from: "May 25 p38",
-  //   (
-  //     ([1 lb], [tofu], [wow]),
-  //   ),
-  //   [
-  //     description
-  //   ],
-  // ),
   recipe(
     "breakfast",
     "Chia Seed Pudding",
     is-gf: true,
     is-nf: true,
     image-path: "imgs/chia-seed-pudding.jpg",
-    image-above: true,
+    image-below: true,
     adapted-from: "PlantYou",
     (
+      1,
       ([½ cup], [fruit of choice (mango for yellow, raspberries for pink, blueberries for purple)]),
       ([¾ cup], [unsweetened plant-based milk (soy, almond, cashew, or oat)]),
       ([¼ cup], [coconut milk]),
       ([1 teaspoon], [pure maple syrup]),
       ([1 teaspoon], [vanilla extract]),
+      none,
       ([3 tablespoons], [chia seeds]),
       ([1 cup], [unsweetened Vegan Yogurt]),
     ),
     [
-      In a blender, combine the fruit, plant-based milk, coconut milk, maple syrup, and vanilla. Transfer the mixture to a sealable container and stir in the chia seeds until evenly dispersed.
+      In a blender, combine #g(1) . Transfer the mixture to a sealable container and stir in the chia seeds until evenly dispersed.
       Cover and allow to set in the fridge for at least 2 hours. Once thickened, transfer to jars with your vegan yogurt of choice on top.
     ],
   ),
@@ -441,21 +373,26 @@
     image-above: true,
     adapted-from: "Mystery Magazine",
     (
+      1,
       ([¾ cup], [olive oil]),
       ([2 teaspoons], [maple syrup]),
-      ([juice of 3], [limes]),
+      ([juice of 3], ingredient[limes]),
+      2,
       ([2 cans (15-ounce)], [black beans], [rinsed and drained]),
       ([1 can], [corn]),
-      ([1], [bell pepper], [diced]),
-      ([1 bunch], [scallions], [chopped]),
-      ([½ cup], [fresh cilantro], [chopped]),
+      ([1], ingredient[bell pepper], [diced]),
+      ([1 bunch], ingredient[scallions], [chopped]),
+      ([½ cup], ingredient[fresh cilantro], [chopped]),
+      none,
       ([to taste], [salt]),
       ([to taste], [pepper]),
-      ([1], [avocado], [diced]),
+      ([1], ingredient[avocado], [diced]),
       ([as needed], [tortilla chips]),
     ),
-    [In a small bowl, whisk together the olive oil, maple syrup, and lime juice.
-      Add the black beans, corn, bell pepper, scallions, and cilantro and toss to combine
+    [In a small bowl, whisk together #g(1).
+      Add the black beans, corn, bell pepper, scallions, and cilantro and toss to combine.
+
+
       Season with salt and pepper to taste.
       Gently fold in the diced avocado just before serving.
       Serve chilled or at room temperature with tortilla chips
@@ -467,6 +404,7 @@
     is-gf: true,
     is-nf: true,
     image-path: "imgs/rajma.jpg",
+    image-below: true,
     adapted-from: "The Recipe Hut",
     (
       1,
@@ -480,7 +418,7 @@
       ([pinch], [salt]),
       ([1 tablespoon], [fresh ginger], [grated]),
       ([1 tablespoon], [garlic], [minced]),
-      ([3 medium], [tomatoes], [pureed]),
+      ([3 medium], ingredient[tomatoes], [pureed]),
       ([1/4 teaspoon], [turmeric powder]),
       ([to taste], [salt]),
       ([2 heaped teaspoons], [coriander powder]),
@@ -490,7 +428,7 @@
       ([4 cups], [water]),
       ([1 teaspoon], [dried fenugreek leaves]),
       ([2–3], [green chilies]),
-      ([as needed], [fresh cilantro], [chopped]),
+      ([as needed], ingredient[fresh cilantro], [chopped]),
       ([1/2 teaspoon], [garam masala]),
       2,
       ([1 1/2 cups], [basmati rice], [washed and soaked]),
@@ -499,20 +437,24 @@
       ([1 teaspoon], [salt]),
       ([1 1/2 teaspoons], [vegetable oil]),
     ),
-    [Sauté the Spices:
+    [S
+
+      Sauté the Spices:
       Heat 2-3 tbsp olive oil in a pot. Add 1 tsp cumin seeds and let it splutter.
-      Add 2-3 cloves, 7-8 peppercorns, 1 cardamom pod, and 2 bay leaves. Sauté for 1 minute.
-      Add 1 finely chopped onion and cook for 2-3 minutes until translucent, adding a pinch of salt.
-      Add 1 tbsp grated ginger and 1 tbsp minced garlic. Cook for 2-3 minutes until fragrant.
-      Add 3 pureed tomatoes and cook for 10 minutes until the oil separates from the masala.
-      Stir in 1/4 tsp turmeric, salt to taste, 2 tsp coriander powder, 1 tsp roasted cumin powder, and 1/2 tsp red chili powder. Cook for 1 minute.
+      Add 2-3 cloves, 7-8 peppercorns, 1 cardamom pod, and 2 bay leaves. Sauté for #u[1 minute].
+      Add 1 finely chopped onion and cook for #u[2-3 minutes] until translucent, adding a pinch of salt.
+      Add 1 tbsp grated ginger and 1 tbsp minced garlic. Cook for #u[2-3 minutes] until fragrant.
+      Add 3 pureed tomatoes and cook for #u[10 minutes] until the oil separates from the masala.
+
+
+      Stir in 1/4 tsp turmeric, salt to taste, 2 tsp coriander powder, 1 tsp roasted cumin powder, and 1/2 tsp red chili powder. Cook for #u[1 minute].
       Add 3 cans of rinsed red kidney beans and 3 cups of water. Stir well.
-      Leave uncovered and cook for 25 minutes or until the beans have softened and absorbed
-      description
-      description the flavors.
+      Leave uncovered and cook for #u[25 minutes] or until the beans have softened and absorbed the flavors.
+
+
       While the rajma is cooking start the rice. Rinse rice 3 times, then add water, salt, oil, and cumin seeds.
       After cooking, taste the rajma and adjust salt and spices as needed.
-      Add 1 tsp kasoori methi, 2-3 whole green chilies, and fresh cilantro to the rajma. Cook an additional 2-3 minutes
+      Add 1 tsp kasoori methi, 2-3 whole green chilies, and fresh cilantro to the rajma. Cook an additional #u[2-3 minutes]
       Stir in 1/2 tsp garam masala and additional cilantro. Serve hot with rice.
     ],
     image-above: true,
@@ -527,7 +469,7 @@
     adapted-from: "Aunty and Uncle family recipe",
     (
       ([3 tablespoons], [avocado oil]),
-      ([2 cups], [yellow onion], [diced]),
+      ([2 cups], ingredient[yellow onion], [diced]),
       ([3 cloves], [garlic], [minced]),
       ([1 lb], [ground Impossible meat]),
       ([2 teaspoons], [salt]),
@@ -543,12 +485,12 @@
       ([2], [bay leaves]),
     ),
     [ In a large pot, heat avocado oil over medium heat.
-      Add 2 cups diced yellow onion and 3 cloves minced garlic. Sauté for about 5 minutes until the onions are softened.
+      Add 2 cups diced yellow onion and 3 cloves minced garlic. Sauté for about #u[5 minutes] until the onions are softened.
       Add 1 lb ground impossible meat to the pot. Season with 2 tsp salt and 1 tsp black pepper. Cook until the impossible meat is browned and fully cooked.
-      Stir in 2 tsp cumin, 1½ tsp oregano, 1 tsp coriander, 1½ tsp chili powder, and ½ tsp cayenne pepper. Cook for 1-2 minutes until the spices become fragrant.
+      Stir in 2 tsp cumin, 1½ tsp oregano, 1 tsp coriander, 1½ tsp chili powder, and ½ tsp cayenne pepper. Cook for #u[1-2 minutes] until the spices become fragrant.
       Add 2-4 oz diced green chilies, 2 cans of white beans, 2 cups veggie broth, and 2 bay leaves. Stir everything together.
       In a blender or food processor, blend 1 can of white beans into a smooth puree. Add this puree to the pot and stir well.
-      Bring the mixture to a boil, then reduce the heat to a simmer. Let it cook for about 30-40 minutes, stirring occasionally, to allow the flavors to meld and the chili to thicken.
+      Bring the mixture to a boil, then reduce the heat to a simmer. Let it cook for about #u[30-40 minutes], stirring occasionally, to allow the flavors to meld and the chili to thicken.
       Remove the bay leaves. Serve the chili hot with sourdough bread, vegan sour cream, vegan cheese, and any other desired toppings.
     ],
   ),
@@ -561,7 +503,7 @@
     image-path: "imgs/Vegan-Cauliflower-Soup-7.jpg",
     adapted-from: link("https://happykitchen.rocks/silky-vegan-cauliflower-soup/")[Happy Kitchen],
     (
-      ([1 head], [cauliflower]),
+      ([1 head], ingredient[cauliflower]),
       ([1 tablespoon], [olive oil]),
       ([2 cloves], [garlic], [minced]),
       ([2+2 sprigs], [thyme]),
@@ -601,6 +543,7 @@
       ([1/4 teaspoon], [black pepper]),
       ([1/2 teaspoon], [onion powder]),
       ([1/2 teaspoon], [garlic powder]),
+      none,
       ([for frying], [vegetable oil]),
       2,
       ([2 tablespoons], [brown rice syrup]),
@@ -613,24 +556,63 @@
       3,
       ([1/2], [red onion], [finely diced]),
       ([1 bunch], [celery], [chopped]),
-      ([1 cup], [dried Szechuan red peppercorns]),
+      ([1/8 cup], [dried Szechuan red peppercorns]),
       ([2], [scallions], [chopped]),
       ([for stir-frying], [olive oil]),
     ),
-    [In a large bowl, mix together 3 tbsp potato starch, 1/2 tsp salt, 1/4 tsp black pepper, 1/2 tsp onion powder, and 1/2 tsp garlic powder.
+    [In a large bowl, mix together #g(1).
       Add the tofu cubes to the bowl and toss to coat evenly with the potato starch mixture.
       Heat enough vegetable oil in a large nonstick skillet over medium-high heat to generously coat the surface.
       Once the oil is hot and shimmering, add the tofu cubes in a single layer, making sure they don’t touch each other (you may need to work in batches).
-      Cook the tofu for about 3 minutes on one side until it browns, then flip and cook for another 3 minutes on the other side.
+      Cook the tofu for about #u[3 minutes] on one side until it browns, then flip and cook for another #u[3 minutes] on the other side.
+
+
       While that tofu is frying is a great time to start cooking the rice.
       Once browned, transfer the tofu to a wire rack to drain excess oil.
       In a small bowl, whisk together 2 tbsp brown rice syrup, 2 tbsp water, 2 tbsp soy sauce, 1 tbsp vinegar, 1 tsp potato starch, 1 tsp gochugaru, and 1/4 tsp black pepper.
+
+
       In a large wok or skillet, heat olive oil over medium-high heat.
-      Add 1/2 diced red onion, chopped celery and 1 cup dried Szechuan red chilies. Sauté for about 3 minutes until the onion softens.
-      Pour the prepared sauce into the wok with the sautéed vegetables and cook for about 1 minute, stirring until the sauce thickens.
+      Add 1/2 diced red onion, chopped celery and 1 cup dried Szechuan red chilies. Sauté for about #u[3 minutes] until the onion softens.
+      Pour the prepared sauce into the wok with the sautéed vegetables and cook for about #u[1 minute], stirring until the sauce thickens.
+
+
       Remove from heat and gently stir in the fried tofu, making sure each piece is coated with the sauce.
       Garnish with chopped scallions.
       Serve immediately while the tofu is crispy.
+    ],
+  ),
+
+  recipe(
+    "main",
+    "Kimchi Jjigae",
+    is-gf: true,
+    is-nf: true,
+    image-path: "imgs/spicycrunchytofu.jpg",
+    adapted-from: link(
+      "https://thekoreanvegan.com/vegan-kimchi-jjigae-reigns-supreme/",
+    )[The Korean Vegan Cookbook],
+    (
+      ([1 tablespoon], [sesame oil], [plus more for garnish]),
+      ([1 tablespoon], [vegetable oil], [plus more for garnish]),
+      ([1], [onion], [diced]),
+      ([4], [scallions], [chopped]),
+      ([3 cloves], [garlic], [minced]),
+      ([1], [potato], [diced]),
+      ([2 cups], [ kimchi]),
+      ([2 tablespoons], [gochugaru]),
+      ([2 tablespoons], [gochujang]),
+      ([2 tablespoons], [soy sauce]),
+      ([1/2 teaspoon], [cracked black pepper]),
+      ([2 cups], [vegetable broth]),
+      ([16 ounces], [medium-firm tofu]),
+      ([1 3/4 cups], [cooked black beans]),
+    ),
+    [
+      Start rice cooking in the rice cooker. Add sesame oil and vegetable oil to a large pot.
+      Add diced onion, scallion whites, garlic, and ginger until garlic softens and onions begin to throw translucent (about 2 minutes). Add the gochugaru and stir regularly so that it doesn't burn.
+      Next, add your potatoes, kimchi, and gochujang. Stir all the contents of the pot together until they are all evenly coated. Deglaze your pot with soy sauce, stirring so that everything is well-incorporated. Add cracked black pepper. Then, add your vegetable broth. Increase the heat to a medium-high until the pot comes to a boil. Then reduce heat to low and allow the pot to simmer for about 10 minutes, until potatoes are cooked.
+      Add your sliced tofu, black beans. Cook for an additional 3 minutes, until potatoes are fully cooked. Garnish with scallion greens, an extra drizzle of sesame oil (optional), and remove from heat. Serve with bowl of rice.
     ],
   ),
   recipe(
@@ -695,16 +677,18 @@
       ([#frac(1, 2) teaspoon], [dijon mustard]),
       ([#frac(1, 2) cup], [non-dairy milk], [unsweetened], [soy or almond]),
       ([2 heaping cups], [broccoli florets], [cut into smaller pieces]),
-      ([1 cup], [cheddar], [shredded], [plant-based if vegan]),
+      ([1 cup], [vegan cheddar], [shredded]),
       ([#frac(1, 4) cup], [parmesan shreds], [plus more for topping], [plant-based if vegan]),
     ),
-    [ In a medium or large pot, begin heating 1 tablespoon vegan butter over medium heat. Add in one diced medium onion and sauté until softened and slightly browned (5-7 minutes).
-      Add in 3 cloves minced garlic, 1/2 cup shredded carrots, and salt and spices. Cook for few minutes.
-      3 cloves minced garlic, 1/2 cup shredded carrots, 1/2 tsp salt, 1/4 tsp freshly ground black pepper, 1/4 tsp paprika
-      Pour in your orzo and vegetable broth. Add in the Dijon mustard. Bring to a boil then lower heat, cover, and simmer for 5 minutes.
-      1 cup uncooked orzo, 2 cups vegetable broth, 1/2 tsp Dijon mustard
-      Add in the 1/2 cup milk and 2 cups broccoli florets. Stir until combined. Cover for another 4-5 minutes until broccoli is cooked through.
-      Stir in the 1 cup vegan cheddar shreds and 1/4 cup parm until it is melty and creamy.
+    [ In a medium or large pot, begin heating 1 tablespoon vegan butter over medium heat. Add in one diced medium onion and sauté until softened and slightly browned #[5-7 minutes].
+      Add in 3 cloves minced garlic, #frac(1, 2) cup shredded carrots, and salt and spices. Cook for few minutes.
+
+      Pour in your orzo and vegetable broth. Add in the Dijon mustard. Bring to a boil then lower heat, cover, and simmer for #u[5 minutes].
+
+      Add in the #frac(1, 2) cup milk and 2 cups broccoli florets. Stir until combined. Cover for another #u[4-5 minutes] until broccoli is cooked through.
+      Stir in the 1 cup vegan cheddar shreds and #frac(1, 4) cup parm until it is melty and creamy.
+
+
       Enjoy right away. Feel free to sprinkle some freshly ground pepper on top and/or nutritional yeast.
     ],
   ),
@@ -819,18 +803,18 @@
   recipe(
     "treat",
     "Peanut Butter Bars",
-    is-nf: true,
+    image-above: true,
     adapted-from: link(
       "https://minibatchbaker.com/small-batch-no-bake-chocolate-peanut-butter-bars/",
     )[Mini Batch Baker],
     image-path: "imgs/No-Bake-Peanut-Butter-Bars-RC-2010984005.jpg",
     (
-      ([], [Bar dough]),
-      ([1/2 cup], [graham cracker crumbs], [60 g], [sub gluten-free cookie crumbs]),
-      ([1/2 cup], [powdered sugar], [60 g], [sub regular sugar]),
-      ([1/4 cup], [plant butter], [melted], [56 g]),
-      ([1/4 cup], [peanut butter], [64 g], [sub other nut/seed butter]),
-      ([], [Chocolate layer]),
+      1,
+      ([1/2 cup], [graham cracker crumbs]),
+      ([1/2 cup], [sugar]),
+      ([1/4 cup], [plant butter], [melted]),
+      ([1/4 cup], [peanut butter], [sub other nut/seed butter]),
+      2,
       ([1/3 cup], [chocolate chips], [60 g]),
       ([1 Tbsp], [peanut butter], [16 g], [sub other nut/seed butter]),
     ),
@@ -842,6 +826,32 @@
 
       Refrigerate #u[1 hour], then cut into #u[8] squares.
 
+    ],
+  ),
+
+  recipe(
+    "treat",
+    "Ida's Crazy Cake",
+    image-above: true,
+    image-path: "imgs/idascake.jpg",
+    is-gf: false,
+    is-nf: true,
+    adapted-from: "Grandma Waynun's Mature Living Magazine p.20",
+    (
+      ([#frac(1, 2) cup], [flour]),
+      ([1 cup], [flour]),
+      ([1 cup], [sugar]),
+      ([1 teaspoons], [baking soda]),
+      ([1 teaspoons], [salt]),
+      ([1 tablespoon], [vinegar]),
+      ([6 tablespoons], [oil]),
+      ([1 teaspoon], [vanilla]),
+      ([1 cup], [water]),
+    ),
+    [
+      Sift dry ingredients once, then sift them again into aan 8" or 9" inch square pan. Make 3 wells in the flour. In the first,
+      put the vinegar. In the second put the oil.In the third, put the vanilla. Pout water over all the ingredients.
+      Stir with a fork until it is mixed well. Bake at 350 degrees for 25 to 30 minutes.
     ],
   ),
   recipe(
@@ -951,16 +961,17 @@
     "side",
     "Eggless Drop Soup",
     is-nf: true,
+    image-below: true,
     adapted-from: "Chinese Homestyle",
     image-path: "imgs/eggdrop.jpg",
     (
-      ([], [Spice mix]),
+      1,
       ([2 Tbsp], [water]),
       ([4 tsp], [cornstarch/potato starch]),
       ([#frac(1, 4) tsp], [white pepper powder]),
       ([#frac(1, 4) tsp], [salt], [or to taste]),
       ([#frac(1, 8) tsp], [turmeric powder], [for yellow color, optional]),
-      ([], [Soup]),
+      2,
       ([4 cups], [water]),
       ([3], [green onions], [thinly sliced, white and green parts separated]),
       ([2 slices], [ginger]),
@@ -1036,6 +1047,7 @@
     "Warm Cous Cous Spiced Salad",
     is-gf: true,
     is-nf: true,
+    image-below: true,
     adapted-from: "America's Test Kitchen",
     image-path: "imgs/couscous.jpg",
     (
@@ -1112,16 +1124,17 @@
   recipe(
     "side",
     "Pasta Salad",
+    image-below: true,
     is-nf: true,
     adapted-from: link("https://foodwithfeeling.com/vegan-pasta-salad-easy/")[Food with Feeling],
     image-path: "imgs/Vegan-Pasta-Salad-2-683x1024.jpg",
     (
-      ([1 lb], [pasta], [I used rotini]),
+      ([1 lb], [pasta]),
       ([#frac(1, 2)], [red onion], [thinly sliced]),
-      ([#frac(1, 2) cup], [grape or cherry tomatoes], [halved or quartered]),
+      ([#frac(1, 2) cup], [cherry tomatoes], [halved]),
       ([1], [small green bell pepper], [chopped], [about 1 cup]),
       ([1 can], [sliced black olives], [6 oz]),
-      ([#frac(1, 4) cup], [chopped fresh parsley or cilantro], [I used parsley]),
+      ([#frac(1, 4) cup], [chopped fresh parsley or cilantro]),
       ([], [salt and pepper], [to taste]),
       ([#frac(1, 3) cup], [olive oil]),
       ([2 Tbsp], [white balsamic vinegar]),
@@ -1131,14 +1144,11 @@
       ([#frac(1, 4) tsp], [crushed red pepper]),
       ([], [sugar], [good pinch]),
     ),
-    [Cook the pasta
-      Cook pasta according to package directions until desired doneness. Drain and let cool.
+    [Cook pasta according to package directions until desired doneness. Drain and let cool.
       If serving cold, run under cold water to cool thoroughly.
 
-      Make the dressing
       Combine olive oil, vinegar, spices, and sugar. Whisk until fully combined. Set aside.
 
-      Assemble the salad
       In a large bowl, combine pasta, chopped vegetables, and parsley (or cilantro).
       Add dressing and toss until pasta and veggies are fully coated.
       Season with salt and pepper to taste and serve.
@@ -1149,6 +1159,7 @@
     "Curry Lentil Soup",
     image-path: "imgs/lentil-soup-recipe-580x794.jpg",
     is-gf: true,
+    image-below: true,
     is-nf: true,
     adapted-from: link("https://www.loveandlemons.com/curry-lentil-soup/#wprm-recipe-container-75207")[Love and Lemons],
     (
@@ -1229,9 +1240,40 @@
   ),
   recipe(
     "treat",
+    "PB Chocolate Nobake Cookies",
+    is-gf: true,
+    image-above: true,
+    image-path: "imgs/nobake2.jpg",
+    adapted-from: link("https://www.karissasvegankitchen.com/vegan-no-bake-cookies/#recipe")[karissasvegankitchen],
+    (
+      ([#frac(1, 2) cup], [vegan butter]),
+      ([1#frac(3, 4) cup], [granulated sugar]),
+      ([#frac(1, 2) cup], [non-dairy milk]),
+      ([#frac(1, 4) cup], [cocoa powder]),
+      ([3 cup], [quick oats]),
+      ([#frac(3, 4) cup], [creamy peanut butter]),
+      ([1 tbsp], [vanilla extract]),
+      ([#frac(1, 4) tsp], [salt]),
+    ),
+    [
+      Make the chocolate mixture
+      In a large saucepan, combine the butter, sugar, non-dairy milk, and cocoa powder. Bring to a boil over medium heat, whisking frequently. Let boil for #u[1 min].
+
+      Remove from heat. Immediately stir in the oats, peanut butter, vanilla, and salt until fully combined.
+
+      Prep & scoop
+      Line #u[2 baking sheets] with parchment paper. Drop spoonfuls of the warm cookie mixture onto the baking sheets.
+
+      Cool & set
+      Let cool in fridge until set, about #u[30 mins].
+    ],
+  ),
+  recipe(
+    "treat",
     "Chocolate Chip Cookies",
     image-path: "imgs/Chocolate-Chip-Cookies-1-1-1024x1536-183090191.jpg",
     is-nf: true,
+    // image-below: true,
     adapted-from: "Purely Kaylee",
     (
       ([#frac(1, 2) cup], [vegan butter], [slightly softened]),
@@ -1256,35 +1298,6 @@
       Scoop cookie dough into balls and place on prepared baking sheet.
       Bake #u[12 mins] on the middle rack, removing while centers are still slightly underbaked.
       Let cookies rest #u[5 mins] on baking sheet before serving.
-    ],
-  ),
-  recipe(
-    "treat",
-    "PB Chocolate Nobake Cookies",
-    is-gf: true,
-    image-path: "imgs/nobakecookies.jpg",
-    adapted-from: link("https://www.karissasvegankitchen.com/vegan-no-bake-cookies/#recipe")[karissasvegankitchen],
-    (
-      ([#frac(1, 2) cup], [vegan butter]),
-      ([1#frac(3, 4) cup], [granulated sugar]),
-      ([#frac(1, 2) cup], [non-dairy milk]),
-      ([#frac(1, 4) cup], [cocoa powder]),
-      ([3 cup], [quick oats]),
-      ([#frac(3, 4) cup], [creamy peanut butter]),
-      ([1 tbsp], [vanilla extract]),
-      ([#frac(1, 4) tsp], [salt]),
-    ),
-    [
-      Make the chocolate mixture
-      In a large saucepan, combine the butter, sugar, non-dairy milk, and cocoa powder. Bring to a boil over medium heat, whisking frequently. Let boil for #u[1 min].
-
-      Remove from heat. Immediately stir in the oats, peanut butter, vanilla, and salt until fully combined.
-
-      Prep & scoop
-      Line #u[2 baking sheets] with parchment paper. Drop spoonfuls of the warm cookie mixture onto the baking sheets.
-
-      Cool & set
-      Let cool in fridge until set, about #u[30 mins].
     ],
   ),
   recipe(
@@ -1337,7 +1350,7 @@
     "main",
     "Crispy Tofu Tacos",
     image-path: "imgs/crispytofutaco.jpg",
-    image-above: true,
+    image-below: true,
     is-gf: true,
     is-nf: true,
     adapted-from: "New York Times",
@@ -1355,17 +1368,18 @@
       ([to taste], [black pepper]),
       ([#frac(1, 4) cup], [tomato paste]),
       2,
-      ([2], [ripe avocados]),
+      ([2], ingredient[avocados]),
       ([2 tbsp], [mayonnaise], [vegan, if desired]),
       ([#frac(1, 2) tsp], [lime zest], [finely grated]),
       ([3 tbsp], [lime juice]),
       ([8], [flour/corn tortillas], [warmed]),
       3,
-      ([for serving], [red onion], [minced]),
+      ([for serving], ingredient[red onion], [minced]),
       ([for serving], [radishes], [thinly sliced]),
       ([for serving], [cilantro], [chopped]),
     ),
     [
+
       Preheat the oven
       Heat oven to #u[400°F].
 
@@ -1405,11 +1419,12 @@
     "Manapua Dough",
     is-nf: true,
     image-path: "imgs/manapua.jpg",
+    image-above: true,
     adapted-from: "Ella's Recipe",
     (
       ([3 cups], [all-purpose flour], [plus extra for rolling]),
       ([1 packet], [active dry yeast]),
-      ([2 tsp], [sugar], [for activating yeast]),
+      ([2 tsp], [#index[sugar]sugar], [for activating yeast]),
       ([1 tbsp], [sugar]),
       ([2 tsp], [baking powder]),
       ([1 tbsp], [oil], [neutral oil of choice]),
@@ -1484,7 +1499,7 @@
 
 #box()<end>
 
-#make-index(title: [Index], outlined: true, use-page-counter: true)
+// #make-index(title: [Index], outlined: true, use-page-counter: true)
 
 
 // git status
